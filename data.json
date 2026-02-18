@@ -1,0 +1,324 @@
+{
+    "orders": [
+        {
+            "id": 1,
+            "name": "Blue Cotton Panjabi",
+            "price": 2290,
+            "currency": "BDT",
+            "vat": true,
+            "sku": "MEN001",
+            "category": "Men Ethnic Wear",
+            "brand": "Aarong",
+            "color": "Blue",
+            "fabric": "Cotton",
+            "fitOptions": [
+                "Fitted",
+                "Semi-Fitted"
+            ],
+            "sizes": [
+                "S",
+                "M",
+                "L",
+                "XL"
+            ],
+            "stock": 30,
+            "rating": 4.5,
+            "shortDescription": "Comfortable daily panjabi.",
+            "description": "Soft cotton panjabi suitable for everyday wear.",
+            "washCare": "Wash separately in mild detergent",
+            "images": [
+                "https://i.ibb.co.com/SwmMsGzm/0030000137390.webp"
+            ],
+            "status": "In Stock",
+            "createdAt": "2026-02-12",
+            "trending": true,
+            "featureProduct": true
+        },
+        {
+            "id": 2,
+            "name": "Black Linen Panjabi",
+            "price": 2590,
+            "currency": "BDT",
+            "vat": true,
+            "sku": "MEN002",
+            "category": "Men Ethnic Wear",
+            "brand": "Yellow",
+            "color": "Black",
+            "fabric": "Linen",
+            "fitOptions": [
+                "Regular"
+            ],
+            "sizes": [
+                "M",
+                "L",
+                "XL"
+            ],
+            "stock": 22,
+            "rating": 4.3,
+            "shortDescription": "Elegant panjabi.",
+            "description": "Premium linen panjabi for festive wear.",
+            "washCare": "Dry clean recommended",
+            "images": [
+                "/images/men2.png"
+            ],
+            "status": "In Stock",
+            "createdAt": "2026-02-12",
+            "trending": false,
+            "featureProduct": true
+        },
+        {
+            "id": 3,
+            "name": "Red Silk Saree",
+            "price": 4590,
+            "currency": "BDT",
+            "vat": true,
+            "sku": "WMN001",
+            "category": "Women Ethnic Wear",
+            "brand": "Aarong",
+            "color": "Red",
+            "fabric": "Silk",
+            "fitOptions": [
+                "Regular"
+            ],
+            "sizes": [
+                "Free Size"
+            ],
+            "stock": 15,
+            "rating": 4.8,
+            "shortDescription": "Traditional silk saree.",
+            "description": "Elegant silk saree for weddings and festivals.",
+            "washCare": "Dry clean only",
+            "images": [
+                "https://preview.colorlib.com/theme/capitalshop/assets/img/gallery/latest4.jpg"
+            ],
+            "status": "In Stock",
+            "createdAt": "2026-02-12",
+            "trending": true,
+            "featureProduct": true
+        },
+        {
+            "id": 4,
+            "name": "Green Cotton Salwar Kameez",
+            "price": 3190,
+            "currency": "BDT",
+            "vat": true,
+            "sku": "WMN002",
+            "category": "Women Ethnic Wear",
+            "brand": "Yellow",
+            "color": "Green",
+            "fabric": "Cotton",
+            "fitOptions": [
+                "Semi-Fitted"
+            ],
+            "sizes": [
+                "S",
+                "M",
+                "L"
+            ],
+            "stock": 25,
+            "rating": 4.4,
+            "shortDescription": "Daily wear salwar kameez.",
+            "description": "Comfortable cotton salwar kameez.",
+            "washCare": "Machine wash",
+            "images": [
+                "/images/women2.png"
+            ],
+            "status": "In Stock",
+            "createdAt": "2026-02-12",
+            "trending": false,
+            "featureProduct": false
+        },
+        {
+            "id": 5,
+            "name": "Pink Party Gown",
+            "price": 4990,
+            "currency": "BDT",
+            "vat": true,
+            "sku": "WMN003",
+            "category": "Women Western Wear",
+            "brand": "Ecstasy",
+            "color": "Pink",
+            "fabric": "Georgette",
+            "fitOptions": [
+                "Fitted"
+            ],
+            "sizes": [
+                "S",
+                "M",
+                "L"
+            ],
+            "stock": 12,
+            "rating": 4.6,
+            "shortDescription": "Stylish party gown.",
+            "description": "Beautiful gown for evening parties.",
+            "washCare": "Dry clean",
+            "images": [
+                "https://preview.colorlib.com/theme/capitalshop/assets/img/gallery/latest2.jpg"
+            ],
+            "status": "In Stock",
+            "createdAt": "2026-02-12",
+            "trending": true,
+            "featureProduct": false
+        },
+        {
+            "id": 6,
+            "name": "Kids Blue Kurta Set",
+            "price": 1590,
+            "currency": "BDT",
+            "vat": true,
+            "sku": "KID001",
+            "category": "Kids Ethnic Wear",
+            "brand": "Aarong",
+            "color": "Blue",
+            "fabric": "Cotton",
+            "fitOptions": [
+                "Regular"
+            ],
+            "sizes": [
+                "2Y",
+                "4Y",
+                "6Y"
+            ],
+            "stock": 20,
+            "rating": 4.3,
+            "shortDescription": "Festive kurta set.",
+            "description": "Comfortable cotton kurta for kids.",
+            "washCare": "Machine wash",
+            "images": [
+                "https://i.ibb.co.com/FLGzMQpW/download-1.jpg"
+            ],
+            "status": "In Stock",
+            "createdAt": "2026-02-12",
+            "trending": true,
+            "featureProduct": true
+        },
+        {
+            "id": 7,
+            "name": "Kids Pink Frock",
+            "price": 1490,
+            "currency": "BDT",
+            "vat": true,
+            "sku": "KID002",
+            "category": "Kids Wear",
+            "brand": "Yellow",
+            "color": "Pink",
+            "fabric": "Cotton",
+            "fitOptions": [
+                "Regular"
+            ],
+            "sizes": [
+                "2Y",
+                "4Y",
+                "6Y"
+            ],
+            "stock": 18,
+            "rating": 4.5,
+            "shortDescription": "Cute frock.",
+            "description": "Soft cotton frock for girls.",
+            "washCare": "Hand wash",
+            "images": [
+                "/images/kid2.png"
+            ],
+            "status": "In Stock",
+            "createdAt": "2026-02-12",
+            "trending": false,
+            "featureProduct": false
+        },
+        {
+            "id": 8,
+            "name": "Kids Denim Jacket",
+            "price": 1990,
+            "currency": "BDT",
+            "vat": true,
+            "sku": "KID003",
+            "category": "Kids Winter Wear",
+            "brand": "Ecstasy",
+            "color": "Denim Blue",
+            "fabric": "Denim",
+            "fitOptions": [
+                "Regular"
+            ],
+            "sizes": [
+                "4Y",
+                "6Y",
+                "8Y"
+            ],
+            "stock": 14,
+            "rating": 4.6,
+            "shortDescription": "Warm winter jacket.",
+            "description": "Stylish denim jacket for kids.",
+            "washCare": "Machine wash",
+            "images": [
+                "https://i.ibb.co.com/2Y1sXbDj/916rk9qo-l-L-AC-UY1000.jpg"
+            ],
+            "status": "In Stock",
+            "createdAt": "2026-02-12",
+            "trending": true,
+            "featureProduct": false
+        },
+        {
+            "id": 9,
+            "name": "Men Casual T-Shirt",
+            "price": 990,
+            "currency": "BDT",
+            "vat": true,
+            "sku": "MEN003",
+            "category": "Men Casual Wear",
+            "brand": "Easy",
+            "color": "White",
+            "fabric": "Cotton",
+            "fitOptions": [
+                "Regular"
+            ],
+            "sizes": [
+                "M",
+                "L",
+                "XL"
+            ],
+            "stock": 40,
+            "rating": 4.2,
+            "shortDescription": "Everyday t-shirt.",
+            "description": "Soft cotton t-shirt for casual wear.",
+            "washCare": "Machine wash",
+            "images": [
+                "/images/men3.png"
+            ],
+            "status": "In Stock",
+            "createdAt": "2026-02-12",
+            "trending": false,
+            "featureProduct": false
+        },
+        {
+            "id": 10,
+            "name": "Women Denim Jacket",
+            "price": 3490,
+            "currency": "BDT",
+            "vat": true,
+            "sku": "WMN004",
+            "category": "Women Winter Wear",
+            "brand": "Ecstasy",
+            "color": "Blue",
+            "fabric": "Denim",
+            "fitOptions": [
+                "Fitted"
+            ],
+            "sizes": [
+                "S",
+                "M",
+                "L"
+            ],
+            "stock": 16,
+            "rating": 4.7,
+            "shortDescription": "Stylish denim jacket.",
+            "description": "Warm and trendy winter jacket.",
+            "washCare": "Machine wash",
+            "images": [
+                "https://i.ibb.co.com/9HSBzgbB/download-2.jpg"
+            ],
+            "status": "In Stock",
+            "createdAt": "2026-02-12",
+            "trending": true,
+            "featureProduct": true
+        }
+    ]
+}
