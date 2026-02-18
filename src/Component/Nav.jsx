@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { ShoppingCart } from "lucide-react";
+import { Heart, ShoppingCart } from "lucide-react";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
@@ -20,13 +20,13 @@ export default function Nav() {
           <div className="hidden items-center md:flex space-x-9">
             <Link href="/" className="hover:text-indigo-600">Home</Link>
             <Link href="/shoping" className="hover:text-indigo-600">Shop</Link>
-            <Link href="/" className="hover:text-indigo-600">Page</Link>
             <Link href="/contuct" className="hover:text-indigo-600">Contuct</Link>
 
           </div>
           <div className="hidden items-center md:flex space-x-6">
 
             <Link href="/cart" className="relative"><ShoppingCart /><span className="absolute top-[-9] bg-blue-700 rounded-full text-white w-4  flex justify-center items-center h-4 text-sm right-[-9]">0</span></Link>
+            <Link href="/wishlist" className="relative"><Heart /><span className="absolute top-[-9] bg-blue-700 rounded-full text-white w-4  flex justify-center items-center h-4 text-sm right-[-9]">0</span></Link>
             <Link href="/login" className="bg-indigo-600 text-white px-6 py-1 rounded hover:bg-indigo-700">
               Login
             </Link>

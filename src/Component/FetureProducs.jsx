@@ -2,38 +2,38 @@
 import { ArrowLeft, ArrowRight, Heart, Search, ShoppingCart } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation,Autoplay } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
-const TrandingProduct = () => {
+const FetureProducs = () => {
     const [product, setProduct] = useState([])
     useEffect(() => {
         fetch('http://localhost:5001/orders')
             .then(res => res.json())
             .then(data => {
-                const tranding = data.filter(item => item.trending == true)
+                const tranding = data.filter(item => item.featureProduct == true)
                 setProduct(tranding);
             })
         // 
     }, [])
 
     return (
-        <div className='w-11/12 mx-auto my-9 '>
-            <p className='text-3xl text-indigo-600 my-4'>Trending This Week</p>
+        <div className='w-11/12 mx-auto mt-15 mb-9 '>
+            <p className='text-3xl text-center text-indigo-600 my-4'>You May Like</p>
             <div>
 
                 <div className="w-full flex relative mx-auto ">
                     <div className='absolute z-33 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  w-full flex justify-between '>
-                        <button className="custom-prev text-white hover:text-indigo-700 bg-gray-400 rounded-full p-1"><ArrowLeft /></button>
-                        <button className="custom-next text-white hover:text-indigo-700 bg-gray-400 rounded-full p-1"><ArrowRight /></button>
+                        <button className="custom-pre text-white hover:text-indigo-700 bg-gray-400 rounded-full p-1"><ArrowLeft /></button>
+                        <button className="custom-nex text-white hover:text-indigo-700 bg-gray-400 rounded-full p-1"><ArrowRight /></button>
                     </div>
 
                     <Swiper
-                        modules={[Navigation,Autoplay]}
+                        modules={[Navigation]}
                         navigation={{
-                            nextEl: ".custom-next",
-                            prevEl: ".custom-prev",
+                            nextEl: ".custom-nex",
+                            prevEl: ".custom-pre",
                         }}
                         spaceBetween={20}
                         slidesPerView={4}
@@ -42,10 +42,6 @@ const TrandingProduct = () => {
                             0: { slidesPerView: 1 },
                             640: { slidesPerView: 2 },
                             1024: { slidesPerView: 4 },
-                        }}
-                        autoplay={{
-                            delay: 2500,
-                            disableOnInteraction: false,
                         }}
                     >
                         {product.map((item) => (
@@ -56,7 +52,7 @@ const TrandingProduct = () => {
                                         <img
                                             src={item.images}
                                             alt={item.name}
-                                            className="w-full transition duration-500 group-hover:scale-130 h-[350px] object-cover"
+                                            className="w-full transition duration-500 group-hover:scale-130 h-[250px] object-cover"
                                         />
 
                                         {/* Hover Icons */}
@@ -104,4 +100,4 @@ const TrandingProduct = () => {
     );
 };
 
-export default TrandingProduct;
+export default FetureProducs;

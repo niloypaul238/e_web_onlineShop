@@ -59,7 +59,7 @@
             "description": "Premium linen panjabi for festive wear.",
             "washCare": "Dry clean recommended",
             "images": [
-                "/images/men2.png"
+                "https://i.ibb.co.com/C3k0DZRr/04072022174456-9864.jpg"
             ],
             "status": "In Stock",
             "createdAt": "2026-02-12",
@@ -121,7 +121,7 @@
             "description": "Comfortable cotton salwar kameez.",
             "washCare": "Machine wash",
             "images": [
-                "/images/women2.png"
+                "https://i.ibb.co.com/0pWXtCTN/green-printed-cotton-salwar-suit-for-women-1748585554v-791.webp"
             ],
             "status": "In Stock",
             "createdAt": "2026-02-12",
@@ -217,7 +217,7 @@
             "description": "Soft cotton frock for girls.",
             "washCare": "Hand wash",
             "images": [
-                "/images/kid2.png"
+                "https://i.ibb.co.com/GvhJZdL4/LIFG94-1-min.jpg"
             ],
             "status": "In Stock",
             "createdAt": "2026-02-12",
