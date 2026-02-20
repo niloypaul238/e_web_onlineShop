@@ -1,12 +1,11 @@
 import React from 'react';
+import Catagory from '../../../Component/Catagory';
 
 const Shoping = () => {
     return (
         <div>
-            <div className='sm:grid w-11/12 mx-auto my-10 grid-cols-12'>
-                <div className='col-span-4'>Catagory</div>
-                <div className='col-span-7'>Products</div>
-            </div>
+            <Catagory />
+
         </div>
     );
 };

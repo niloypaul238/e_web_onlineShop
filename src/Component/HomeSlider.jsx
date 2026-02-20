@@ -1,6 +1,7 @@
 import Slidr from '@/Component/Slidr'
 import TrandingProduct from '@/Component/TrandingProduct'
 import FetureProducs from '@/Component/FetureProducs'
+import DressGallery from '@/Component/DressGallery'
 
 export default async function HomeSlider() {
   
@@ -21,6 +22,7 @@ export default async function HomeSlider() {
 
       <div>
           <TrandingProduct/>
+          <DressGallery/>
           <FetureProducs/>
       </div>
     </div>

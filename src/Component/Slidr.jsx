@@ -6,6 +6,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { div } from 'framer-motion/client';
+import Link from 'next/link';
 
 const Slidr = () => {
   const slides = [
@@ -93,9 +94,9 @@ const Slidr = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.9 }}
                     viewport={{ once: false }}>
-                    <button className="bg-purple-700 cursor-pointer text-white px-6 py-3 rounded-lg hover:bg-purple-800 transition">
+                    <Link href={'/shoping'} className="bg-purple-700 cursor-pointer text-white px-6 py-3 rounded-lg hover:bg-purple-800 transition">
                       {slide.btn}
-                    </button>
+                    </Link>
                   </motion.div>
 
                 </div>

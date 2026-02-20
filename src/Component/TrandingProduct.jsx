@@ -19,7 +19,7 @@ const TrandingProduct = () => {
     }, [])
 
     return (
-        <div className='w-11/12 mx-auto my-9 '>
+        <div className='w-11/12 mx-auto my-12 '>
             <p className='text-3xl text-indigo-600 my-4'>Trending This Week</p>
             <div>
 
@@ -56,7 +56,7 @@ const TrandingProduct = () => {
                                         <img
                                             src={item.images}
                                             alt={item.name}
-                                            className="w-full transition duration-500 group-hover:scale-130 h-[350px] object-cover"
+                                            className="w-full transition duration-500 group-hover:scale-130 h-87.5 object-cover"
                                         />
 
                                         {/* Hover Icons */}

@@ -2,9 +2,9 @@
 import { ArrowLeft, ArrowRight, Heart, Search, ShoppingCart } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import { Navigation } from 'swiper/modules';
 
 const FetureProducs = () => {
     const [product, setProduct] = useState([])
@@ -19,22 +19,15 @@ const FetureProducs = () => {
     }, [])
 
     return (
-        <div className='w-11/12 mx-auto mt-15 mb-9 '>
-            <p className='text-3xl text-center text-indigo-600 my-4'>You May Like</p>
+        <div className='w-11/12 mx-auto mt-25 mb-9 '>
+            <p className='text-3xl  text-indigo-600  my-4'>You May Like</p>
             <div>
 
                 <div className="w-full flex relative mx-auto ">
-                    <div className='absolute z-33 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  w-full flex justify-between '>
-                        <button className="custom-pre text-white hover:text-indigo-700 bg-gray-400 rounded-full p-1"><ArrowLeft /></button>
-                        <button className="custom-nex text-white hover:text-indigo-700 bg-gray-400 rounded-full p-1"><ArrowRight /></button>
-                    </div>
 
                     <Swiper
+                        navigation={false} 
                         modules={[Navigation]}
-                        navigation={{
-                            nextEl: ".custom-nex",
-                            prevEl: ".custom-pre",
-                        }}
                         spaceBetween={20}
                         slidesPerView={4}
                         loop={true}
