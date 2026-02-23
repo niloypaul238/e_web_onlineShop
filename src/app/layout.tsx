@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Poppins } from "next/font/google";
+import Context from './Context'
 
 import "./globals.css";
 
@@ -34,7 +35,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased ${poppins.className}`}
       >
-        {children}
+        <Context>
+          {children}
+        </Context>
       </body>
     </html>
   );

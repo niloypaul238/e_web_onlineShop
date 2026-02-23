@@ -1,12 +1,19 @@
 "use client"
 import { ArrowLeft, ArrowRight, Heart, Search, ShoppingCart } from 'lucide-react';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation,Autoplay } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import Link from 'next/link';
+import { CreatCont } from '@/app/Context';
+
 
 const TrandingProduct = () => {
+
+    const [whiteListData, setWhiteListData] = useContext(CreatCont)
+
+
     const [product, setProduct] = useState([])
     useEffect(() => {
         fetch('http://localhost:5001/orders')
@@ -17,6 +24,21 @@ const TrandingProduct = () => {
             })
         // 
     }, [])
+
+    const whitleListFun = (e) => {
+alert('sdfa')
+        whiteListData.map(itm => {
+            if (itm.id === e) {
+                alert('sdfa')
+            } else {
+                const filterProduct = product?.find(item => item.id === e)
+                setWhiteListData([...whiteListData, filterProduct])
+            }
+        })
+
+    }
+
+
 
     return (
         <div className='w-11/12 mx-auto my-12 '>
@@ -30,7 +52,7 @@ const TrandingProduct = () => {
                     </div>
 
                     <Swiper
-                        modules={[Navigation,Autoplay]}
+                        modules={[Navigation, Autoplay]}
                         navigation={{
                             nextEl: ".custom-next",
                             prevEl: ".custom-prev",
@@ -61,11 +83,11 @@ const TrandingProduct = () => {
 
                                         {/* Hover Icons */}
                                         <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition duration-700 ease-in-out">
-                                            <button className="bg-white hover:bg-red-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
+                                            <Link href={`/productDetails/${item.id}`} className="bg-white hover:bg-red-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
                                                 <ShoppingCart size={18} />
-                                            </button>
+                                            </Link>
                                             <button className="bg-white hover:bg-red-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
-                                                <Heart size={18} />
+                                                <Heart onClick={() => whitleListFun(item.id)} size={18} />
                                             </button>
                                             <button className="bg-white hover:bg-red-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
                                                 <Search size={18} />

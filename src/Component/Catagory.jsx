@@ -1,6 +1,9 @@
 "use client"
-import { Eye, Heart, Link } from 'lucide-react';
-import React, { useEffect, useState } from 'react';
+import { Eye, Heart, Link2 } from 'lucide-react';
+import Link from 'next/link';
+import React, { useContext, useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
+import { CreatCont } from '../app/Context';
 
 const Catagory = () => {
     const [alldata, setAlldata] = useState([])
@@ -9,6 +12,8 @@ const Catagory = () => {
     const [active, setActive] = useState("All")
     const [shwoProduct, setShowProduct] = useState([])
     const [inputType, setInputType] = useState('')
+    const [whiteListData, setWhiteListData] = useContext(CreatCont)
+
 
     useEffect(() => {
         fetch('http://localhost:5001/orders')
@@ -41,9 +46,40 @@ const Catagory = () => {
 
     }
 
+    const model = (e) => {
+        const findModelProduct = alldata.find(item => item.id == e)
+
+        Swal.fire({
+            html: `
+                <div>
+                    <img src="${findModelProduct.images}" class='h-50 mx-auto'  alt="" />
+                    <p class="text-left text-2xl text-indigo-500">${findModelProduct.name} </p>
+                    <div class="flex flex-col justify-start">
+                        <p class="flex justify-between items-center"><span>Brand : ${findModelProduct.brand}</span> <span class="text-indigo-800 bg-indigo-800/10 p-1 rounded">${findModelProduct.createdAt}</span></p>
+                        <p class="text-left">Color : ${findModelProduct.color}</p>
+                        <p class="text-left"> </p>
+                        <Link href="/" >View Details</Link>
+                    </div>
+                </div>
+            `,
+            showCloseButton: true,
+            showConfirmButton: false,
+        });
+    }
+
+    const whitleListFun = (e) => {
+        const filterProduct = alldata.find(item => item.id ==  e)
+        const findPro = whiteListData.find(item => item?.id === e)
+        if (findPro) {
+            alert("added")
+        } else {
+            setWhiteListData([...whiteListData, filterProduct])
+        }
+    }
+
     return (
         <div className='sm:grid w-11/12 mx-auto gap-5 my-10 grid-cols-12'>
-            <div className='relative col-span-3 group rounded-2xl'>
+            <div className='relative  col-span-3 group rounded-2xl'>
                 <div className='flex flex-col gap-x-3 mt-2 pr-4'>
                     <div className='border-b pb-1 mb-2 border-gray-500'>
                         <p className='text-xl text-gray-500 '>Product Category</p>
@@ -63,23 +99,33 @@ const Catagory = () => {
                     {
                         shwoProduct.map(item => {
                             return (
-                                <div key={item.id} className='overflow-hidden py-4 group relative  rounded flex flex-col justify-center items-center'>
+                                <div key={item.id} className='overflow-hidden cursor-pointer p-4 group relative flex flex-col justify-center items-center'>
 
                                     <span
-                                        class="absolute rounded top-0 right-0 h-px w-0 bg-indigo-500 transition-all duration-300 group-hover:w-full"></span>
+                                        className="absolute rounded top-0 right-0 h-px w-0 bg-indigo-500 transition-all duration-200 group-hover:w-full"></span>
 
                                     <span
-                                        class="absolute rounded top-0 left-0 w-px h-0 bg-indigo-500 transition-all duration-300 delay-300 group-hover:h-full"></span>
+                                        className="absolute rounded top-0 left-0 w-px h-0 bg-indigo-500 transition-all duration-200 delay-200 group-hover:h-full"></span>
 
                                     <span
-                                        class="absolute rounded bottom-0 left-0 h-px w-0 bg-indigo-500 transition-all duration-300 delay-600 group-hover:w-full"></span>
+                                        className="absolute rounded bottom-0 left-0 h-px w-0 bg-indigo-500 transition-all duration-200 delay-200 group-hover:w-full"></span>
 
                                     <span
-                                        class="absolute rounded bottom-0 right-0 w-px h-0 bg-indigo-500 transition-all duration-300 delay-900 group-hover:h-full"></span>
+                                        className="absolute rounded bottom-0 right-0 w-px h-0 bg-indigo-500 transition-all duration-200 delay-200 group-hover:h-full"></span>
 
-                                    <div className='h-50 overflow-hidden'>
-                                        <div className='justify-center group-hover:top-1/2 transition-top duration-300  gap-x-3 top-3/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex w-full absolute'><Heart className='bg-indigo-600 rounded-full text-white p-2 cursor-pointer hover:bg-white hover:text-indigo-600 transition-bg duration-500' size={30} /><Eye className='bg-indigo-600 rounded-full text-white p-2 cursor-pointer hover:bg-white hover:text-indigo-600 transition-bg duration-500' size={30} /><Link className='bg-indigo-600 rounded-full text-white p-2 cursor-pointer hover:bg-white hover:text-indigo-600 transition-bg duration-500' size={30} /></div>
-                                        <img src={item.images} className='h-full' alt="" />
+                                    <div className='h-50 overflow-hidden bg-white'>
+                                        <div>
+                                            <div className='justify-center group-hover:top-1/2 opacity-0 group-hover:opacity-100 transition-top duration-300
+                                          gap-x-3 top-3/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex w-full absolute'>
+                                                <Heart onClick={() => whitleListFun(item.id)} className='bg-indigo-600 rounded-full text-white p-2 cursor-pointer hover:bg-white hover:text-indigo-600 transition-bg duration-500' size={30} />
+                                                <Eye onClick={() => { model(item.id) }} className='bg-indigo-600 rounded-full text-white p-2 cursor-pointer hover:bg-white hover:text-indigo-600 transition-bg duration-500' size={30} />
+                                                <Link href={`/productDetails/${item.id}`}>
+                                                    <Link2 className='bg-indigo-600 rounded-full text-white p-2 cursor-pointer hover:bg-white hover:text-indigo-600 transition-bg duration-500' size={30} />
+                                                </Link>
+
+                                            </div>
+                                            <img src={item.images} className='h-full' alt="" />
+                                        </div>
                                     </div>
 
                                     <p className='text-center group-hover:text-indigo-600 transition-text duration-300'>{item.name.length > 17 ? `${item.name.slice(0, 17)}...` : item.name}</p>

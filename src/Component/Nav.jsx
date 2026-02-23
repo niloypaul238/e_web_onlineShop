@@ -1,10 +1,16 @@
 "use client";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Link from "next/link";
 import { Heart, ShoppingCart } from "lucide-react";
+import { CreatCont } from "@/app/Context";
+import { usePathname } from "next/navigation";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const pathName = usePathname()
+  const [whiteListData, setWhiteListData] = useContext(CreatCont)
+  const [cart, setCart] = useContext(CreatCont)
+
 
   return (
     <nav className="bg-white shadow-md static top-0">
@@ -18,15 +24,17 @@ export default function Nav() {
 
           {/* Right Menu (Desktop) */}
           <div className="hidden items-center md:flex space-x-9">
-            <Link href="/" className="hover:text-indigo-600">Home</Link>
-            <Link href="/shoping" className="hover:text-indigo-600">Shop</Link>
-            <Link href="/contuct" className="hover:text-indigo-600">Contuct</Link>
+            <Link href="/" className={`hover:text-indigo-600 ${pathName == "/" && "text-indigo-600 font-semibold"}`}>Home</Link>
+            <Link href="/shoping" className={`hover:text-indigo-600 ${pathName == "/shoping" && "text-indigo-600 font-semibold"}`}>Shop</Link>
+            <Link href="/contuct" className={`hover:text-indigo-600 ${pathName == "/contuct" && "text-indigo-600 font-semibold"}`}>Contuct</Link>
 
           </div>
           <div className="hidden items-center md:flex space-x-6">
 
-            <Link href="/cart" className="relative"><ShoppingCart /><span className="absolute top-[-9] bg-blue-700 rounded-full text-white w-4  flex justify-center items-center h-4 text-sm right-[-9]">0</span></Link>
-            <Link href="/wishlist" className="relative"><Heart /><span className="absolute top-[-9] bg-blue-700 rounded-full text-white w-4  flex justify-center items-center h-4 text-sm right-[-9]">0</span></Link>
+            <Link href="/cart" className="relative"><ShoppingCart /><span className="absolute top-[-9] bg-blue-700 rounded-full text-white w-4  flex justify-center items-center h-4 text-sm right-[-9]">{cart.length}</span></Link>
+
+            <Link href="/whitelist" className="relative"><Heart /><span className="absolute top-[-9] bg-blue-700 rounded-full text-white w-4  flex justify-center items-center h-4 text-sm right-[-9]">{whiteListData.length}</span></Link>
+            
             <Link href="/login" className="bg-indigo-600 text-white px-6 py-1 rounded hover:bg-indigo-700">
               Login
             </Link>

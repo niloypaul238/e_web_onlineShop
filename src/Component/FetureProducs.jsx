@@ -1,10 +1,11 @@
 "use client"
-import { ArrowLeft, ArrowRight, Heart, Search, ShoppingCart } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from 'swiper/modules';
+import { Heart, Search, ShoppingCart } from 'lucide-react';
+import Link from 'next/link';
 
 const FetureProducs = () => {
     const [product, setProduct] = useState([])
@@ -39,31 +40,32 @@ const FetureProducs = () => {
                     >
                         {product.map((item) => (
                             <SwiperSlide key={item.id}>
-                                <div className="group relative text-center">
+                                <div className="group cursor-pointer relative text-center">
                                     {/* Image */}
                                     <div className="relative overflow-hidden">
                                         <img
                                             src={item.images}
                                             alt={item.name}
-                                            className="w-full transition duration-500 group-hover:scale-130 h-[250px] object-cover"
+
+                                            className="w-full transition duration-500 group-hover:scale-130 h-62.5 object-cover"
                                         />
 
                                         {/* Hover Icons */}
                                         <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition duration-700 ease-in-out">
-                                            <button className="bg-white hover:bg-red-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
+                                            <Link href={`/productDetails/${item.id}`} className="bg-white hover:bg-indigo-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
                                                 <ShoppingCart size={18} />
-                                            </button>
-                                            <button className="bg-white hover:bg-red-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
+                                            </Link>
+                                            <button className="bg-white hover:bg-indigo-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
                                                 <Heart size={18} />
                                             </button>
-                                            <button className="bg-white hover:bg-red-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
+                                            <button className="bg-white hover:bg-indigo-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
                                                 <Search size={18} />
                                             </button>
                                         </div>
                                     </div>
 
                                     {/* Info */}
-                                    <h3 className="mt-4 text-sm font-medium group-hover:text-red-500">
+                                    <h3 className="mt-4 text-sm font-medium group-hover:text-indigo-500">
                                         {item.name}
                                     </h3>
 

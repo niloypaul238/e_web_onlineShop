@@ -26,28 +26,28 @@ const DressGallery = () => {
 
             <div className='gap-1 h-100 border-gray-500/20 grid grid-rows-6 border p-2 grid-cols-6'>
                 <div className=' col-span-2  row-span-3'>
-                    <img src="https://i.ibb.co.com/gLwYtcvw/images-4.jpg" className='w-full h-full object-contain' alt="" />
+                    <img src="https://i.ibb.co.com/gLwYtcvw/images-4.jpg" className='w-full h-full object-cover' alt="" />
                 </div>
                 <div className='  row-span-2 col-span-2'>
                     <img src="https://i.ibb.co.com/YHzhgwC/download-3.jpg" className='w-full h-full object-cover' alt="" />
                 </div>
                 <div className='  row-span-3 col-span-2'>
-                    <img src="https://i.ibb.co.com/60f8Ykrr/download-4.jpg" className='w-full h-full object-contain' alt="" />
+                    <img src="https://i.ibb.co.com/60f8Ykrr/download-4.jpg" className='w-full h-full object-cover' alt="" />
                 </div>
                 <div className='  col-span-2  '>
                     <img src="https://i.ibb.co.com/sJD5xptD/Guide-AW25-566x167-Skidor.jpg" className='w-full h-full object-cover' alt="" />
                 </div>
                 <div className='  col-span-3 row-span-3  '>
-                    <img src="https://i.ibb.co.com/5gFwvWRF/Mens-Ethnic-Wear-Online-1024x1024.webp" className='w-full h-full object-contain' alt="" />
+                    <img src="https://i.ibb.co.com/5gFwvWRF/Mens-Ethnic-Wear-Online-1024x1024.webp" className='w-full h-full object-cover' alt="" />
                 </div>
                 <div className=' col-span-1 row-span-3'>
-                    <img src="https://i.ibb.co.com/jZMn06JN/download-1.jpg" className='w-full h-full object-contain' alt="" />
+                    <img src="https://images.unsplash.com/photo-1700295805070-5e6f0cd0f846?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fGNsb3Roc3xlbnwwfHwwfHx8MA%3D%3D" className='w-full h-full  object-cover' alt="" />
                 </div>
                 <div className=' '>
                     <img src="https://i.ibb.co.com/Wpzd1Q4Q/download-5.jpg" className='w-full h-full object-cover' alt="" />
                 </div>
                 <div className=' row-span-3'>
-                    <img src="https://i.ibb.co.com/jZMn06JN/download-1.jpg" className='w-full h-full object-contain' alt="" />
+                    <img src="https://plus.unsplash.com/premium_photo-1678218575597-5d0a2810825f?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className='w-full h-full object-cover' alt="" />
                 </div>
                 <div className=' row-span-2'>
                     <img src="https://i.ibb.co.com/YHzhgwC/download-3.jpg" className='w-full h-full object-cover' alt="" />
