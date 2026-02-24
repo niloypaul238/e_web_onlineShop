@@ -5,9 +5,13 @@ import { ShoppingCart, X } from 'lucide-react';
 import Link from 'next/link';
 
 const WhiteListProducts = () => {
-    const [whiteListData, setWhiteListData] = useContext(CreatCont)
+    const {whiteListData, setWhiteListData} = useContext(CreatCont)
+    const deletWhiteList = (e) => {
+        const findDelt = whiteListData.filter(item => item.id !== e)
+        setWhiteListData(findDelt)
+    }
 
-    console.log(whiteListData);
+    // console.log(whiteListData);
     return (
         <div className='mt-3'>
             <div>
@@ -37,7 +41,7 @@ const WhiteListProducts = () => {
                                         <td>{item.category}</td>
                                         <td>{item.brand}</td>
                                         <td>{item.color}</td>
-                                        <td className=''><span className='flex gap-x-3 items-center w-full h-full'><X className='text-red-800 cursor-pointer' style={{ color: 'red' }} /><Link href={`/productDetails/${item.id}`} ><ShoppingCart  style={{color:"blue" , cursor:'pointer'}} /></Link></span></td>
+                                        <td className=''><span className='flex gap-x-3 items-center w-full h-full'><X onClick={()=>deletWhiteList(item.id)} className='text-red-800 cursor-pointer' style={{ color: 'red' }} /><Link href={`/productDetails/${item.id}`} ><ShoppingCart  style={{color:"blue" , cursor:'pointer'}} /></Link></span></td>
                                     </tr>
                                 )
                             }) : <tr className=' text-center'><td className='' colSpan={7}><img src="https://eonbazar.com/images/npf.jpg" alt="" className='h-40 mx-auto' /> </td></tr>

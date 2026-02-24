@@ -8,8 +8,8 @@ import { usePathname } from "next/navigation";
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const pathName = usePathname()
-  const [whiteListData, setWhiteListData] = useContext(CreatCont)
-  const [cart, setCart] = useContext(CreatCont)
+  const {whiteListData, setWhiteListData} = useContext(CreatCont)
+  const {cart, setCart} = useContext(CreatCont)
 
 
   return (

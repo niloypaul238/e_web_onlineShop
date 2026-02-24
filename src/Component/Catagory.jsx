@@ -7,13 +7,13 @@ import { CreatCont } from '../app/Context';
 
 const Catagory = () => {
     const [alldata, setAlldata] = useState([])
+    const [shwoProduct, setShowProduct] = useState([])
     const [cata, setCata] = useState(["All"])
     const [filterInput, setFilterInput] = useState(["All"])
     const [active, setActive] = useState("All")
-    const [shwoProduct, setShowProduct] = useState([])
-    const [inputType, setInputType] = useState('')
-    const [whiteListData, setWhiteListData] = useContext(CreatCont)
 
+    const [inputType, setInputType] = useState('')
+    const { whiteListData, setWhiteListData } = useContext(CreatCont)
 
     useEffect(() => {
         fetch('http://localhost:5001/orders')
@@ -24,13 +24,17 @@ const Catagory = () => {
             })
     }, [])
 
-    alldata.map((data) => {
+
+
+
+
+    alldata?.map(data => {
         if (!cata.includes(data.category)) {
             setCata([...cata, data.category])
             setFilterInput([...cata, data.category])
         }
     })
-
+    
 
     const onCatagory = (e) => {
         setInputType(e);
@@ -68,7 +72,7 @@ const Catagory = () => {
     }
 
     const whitleListFun = (e) => {
-        const filterProduct = alldata.find(item => item.id ==  e)
+        const filterProduct = alldata.find(item => item.id == e)
         const findPro = whiteListData.find(item => item?.id === e)
         if (findPro) {
             alert("added")

@@ -11,7 +11,7 @@ import { CreatCont } from '@/app/Context';
 
 const TrandingProduct = () => {
 
-    const [whiteListData, setWhiteListData] = useContext(CreatCont)
+    const { whiteListData, setWhiteListData } = useContext(CreatCont)
 
 
     const [product, setProduct] = useState([])
@@ -25,16 +25,15 @@ const TrandingProduct = () => {
         // 
     }, [])
 
-    const whitleListFun = (e) => {
-alert('sdfa')
-        whiteListData.map(itm => {
-            if (itm.id === e) {
-                alert('sdfa')
+    const whitleListFun = (id) => {
+                const filterProduct = whiteListData?.find(item => item?.id === id)
+            if (filterProduct) {
+                alert('added')
             } else {
-                const filterProduct = product?.find(item => item.id === e)
-                setWhiteListData([...whiteListData, filterProduct])
+                const tranding = product.find(item => item.id == id)
+                setWhiteListData([...whiteListData, tranding])
             }
-        })
+      
 
     }
 

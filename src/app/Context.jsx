@@ -5,7 +5,7 @@ const Context = ({children}) => {
     const [whiteListData,setWhiteListData] = useState([])
     const [cart,setCart] = useState([])
     return (
-        <CreatCont.Provider value={[whiteListData,setWhiteListData,cart,setCart]}>
+        <CreatCont.Provider value={{whiteListData,setWhiteListData,cart,setCart}}>
             {children}
         </CreatCont.Provider>
     );

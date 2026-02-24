@@ -6,8 +6,8 @@ import { CreatCont } from '../app/Context';
 const Details = () => {
     const { id } = useParams();
     const [product, setProduct] = useState([]);
-    const [whiteListData, setWhiteListData] = useContext(CreatCont);
-    const [cart, setCart] = useContext(CreatCont)
+    const {whiteListData, setWhiteListData} = useContext(CreatCont);
+    const {cart, setCart} = useContext(CreatCont)
     const router = useRouter()
 
     useEffect(() => {
@@ -18,8 +18,8 @@ const Details = () => {
     const filterProduct = product?.find(item => item.id === id)
 
 
-    const whitleListFun = (e) => {
-        const findPro = whiteListData.find(item => item?.id === e)
+    const whitleListFun = () => {
+        const findPro = whiteListData?.find(item => item?.id === id)
         if (findPro) {
             alert("Already added ")
             router.push('/whitelist')
@@ -33,7 +33,7 @@ const Details = () => {
         const findPro = cart.find(item => item?.id === id)
         if (findPro) {
             alert("Already added cart")
-         
+
         } else {
             setCart([...cart, filterProduct])
 
@@ -70,7 +70,7 @@ const Details = () => {
                             </div>
                         </div>
                         <div className='mt-3 flex items-center gap-x-3.5'>
-                            <button onClick={addToCart} className='flex border border-gray-500 cursor-pointer  p-2  rounded'>Add To Cart<ShoppingCart /></button> <Heart onClick={() => whitleListFun(id)} className='pl-4' />
+                            <button onClick={addToCart} className='flex border border-gray-500 cursor-pointer  p-2  rounded'>Add To Cart<ShoppingCart /></button> <Heart onClick={whitleListFun} className='pl-4' />
                         </div>
                     </div>
                 </div>
