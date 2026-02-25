@@ -16,7 +16,7 @@ const Catagory = () => {
     const { whiteListData, setWhiteListData } = useContext(CreatCont)
 
     useEffect(() => {
-        fetch('http://localhost:5001/orders')
+        fetch('https://e-web-onlineshop.onrender.com/orders')
             .then(res => res.json())
             .then(data => {
                 setAlldata(data)
