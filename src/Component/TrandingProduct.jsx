@@ -77,7 +77,7 @@ const TrandingProduct = () => {
                                         <img
                                             src={item.images}
                                             alt={item.name}
-                                            className="w-full transition duration-500 group-hover:scale-130 h-87.5 object-cover"
+                                            className="w-full transition duration-500 group-hover:scale-130 h-40 md:h-87.5 object-cover"
                                         />
 
                                         {/* Hover Icons */}

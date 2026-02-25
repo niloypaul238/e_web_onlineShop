@@ -1,14 +1,17 @@
 "use client"
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from 'swiper/modules';
 import { Heart, Search, ShoppingCart } from 'lucide-react';
 import Link from 'next/link';
+import { CreatCont } from '@/app/Context';
 
 const FetureProducs = () => {
     const [product, setProduct] = useState([])
+    const { whiteListData, setWhiteListData } = useContext(CreatCont)
+
     useEffect(() => {
         fetch('http://localhost:5001/orders')
             .then(res => res.json())
@@ -18,6 +21,17 @@ const FetureProducs = () => {
             })
         // 
     }, [])
+    const whitleListFun = (id) => {
+        const filterProduct = whiteListData?.find(item => item?.id === id)
+        if (filterProduct) {
+            alert('added')
+        } else {
+            const tranding = product.find(item => item.id == id)
+            setWhiteListData([...whiteListData, tranding])
+        }
+
+
+    }
 
     return (
         <div className='w-11/12 mx-auto mt-25 mb-9 '>
@@ -27,7 +41,7 @@ const FetureProducs = () => {
                 <div className="w-full flex relative mx-auto ">
 
                     <Swiper
-                        navigation={false} 
+                        navigation={false}
                         modules={[Navigation]}
                         spaceBetween={20}
                         slidesPerView={4}
@@ -56,7 +70,7 @@ const FetureProducs = () => {
                                                 <ShoppingCart size={18} />
                                             </Link>
                                             <button className="bg-white hover:bg-indigo-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
-                                                <Heart size={18} />
+                                                <Heart onClick={() => whitleListFun(item.id)} size={18} />
                                             </button>
                                             <button className="bg-white hover:bg-indigo-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
                                                 <Search size={18} />

@@ -99,7 +99,7 @@ const Catagory = () => {
             </div>
             <div className='col-span-9'>
 
-                <div className='grid w-full grid-cols-4 gap-2'>
+                <div className='grid w-full  sm:grid-cols-2 md:grid-cols-4 gap-2'>
                     {
                         shwoProduct.map(item => {
                             return (
@@ -117,7 +117,7 @@ const Catagory = () => {
                                     <span
                                         className="absolute rounded bottom-0 right-0 w-px h-0 bg-indigo-500 transition-all duration-200 delay-200 group-hover:h-full"></span>
 
-                                    <div className='h-50 overflow-hidden bg-white'>
+                                    <div className='md:h-50 overflow-hidden bg-white'>
                                         <div>
                                             <div className='justify-center group-hover:top-1/2 opacity-0 group-hover:opacity-100 transition-top duration-300
                                           gap-x-3 top-3/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex w-full absolute'>

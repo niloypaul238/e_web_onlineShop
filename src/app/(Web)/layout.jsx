@@ -6,7 +6,7 @@ const WebLayout = ({children}) => {
     return (
         <div>
             <Nav/>
-            {children}
+                <div className='mt-15'>{children}</div>
             <Footer/>
         </div>
     );

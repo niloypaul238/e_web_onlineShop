@@ -52,7 +52,7 @@ const Slidr = () => {
     }
   ]
   return (
-    <div>
+    <div className='mt-10'>
       <Swiper
         modules={[Navigation, Autoplay]}
         navigation
@@ -84,7 +84,7 @@ const Slidr = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: false }}
-                  ><h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 whitespace-pre-line">
+                  ><h1 className="text-3xl md:text-6xl font-bold leading-tight mb-6 whitespace-pre-line">
                       {slide.title}
                     </h1>
                   </motion.div>
@@ -94,7 +94,7 @@ const Slidr = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.9 }}
                     viewport={{ once: false }}>
-                    <Link href={'/shoping'} className="bg-purple-700 cursor-pointer text-white px-6 py-3 rounded-lg hover:bg-purple-800 transition">
+                    <Link href={'/shoping'} className="bg-purple-700 cursor-pointer text-white md:px-6 px-3 py-2 md:py-3 rounded-lg hover:bg-purple-800 transition">
                       {slide.btn}
                     </Link>
                   </motion.div>
@@ -109,7 +109,7 @@ const Slidr = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.9 }}
                     viewport={{ once: false }}>
-                    <img src="/Rectangle 3 (1).png" alt="ds" />
+                    <img src="/Rectangle 3 (1).png" className='h-40 md:h-auto' alt="ds" />
 
                   </motion.div>
                 </div>

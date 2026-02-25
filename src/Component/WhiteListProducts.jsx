@@ -13,13 +13,14 @@ const WhiteListProducts = () => {
 
     // console.log(whiteListData);
     return (
-        <div className='mt-3'>
+        <div className='w-11/12 mt-5 mx-auto'>
+            <p className='text-2xl mt-10'> WhiteList</p>
             <div>
 
                 <table className='w-full table '>
                     <thead>
                         <tr className=''>
-                            <th className='text-left' style={{padding:"10px"}}>Image</th>
+                            <th className='text-left'>Image</th>
                             <th className='text-left'>Product Name</th>
                             <th className='text-left'>Price</th>
                             <th className='text-left'>Category</th>

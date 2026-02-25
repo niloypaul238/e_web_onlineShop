@@ -5,7 +5,7 @@ import Footer from '@/Component/Footer'
 const page = () => {
   return (
     <div>
-        <Nav/>
+        <div className=''><Nav/></div>
         <HomeSlider/>
         <Footer/>
     </div>

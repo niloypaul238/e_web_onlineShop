@@ -1,24 +1,43 @@
 "use client"
 import React, { useContext, useState } from 'react';
 import { CreatCont } from '../app/Context';
+import { Bounce, toast } from 'react-toastify';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const CartComponent = () => {
     const { cart, setCart } = useContext(CreatCont)
-    let [amout,setAmout] = useState(0)
+    let [amout, setAmout] = useState(0)
+    const router = useRouter()
     const [discount, SetDiscount] = useState(0)
 
     cart?.map(item => {
-       return(
-         amout+=Number(item.price)
-       )
+        return (
+            amout += Number(item.price)
+        )
     })
+    const paymentFun = () => {
+        
+        toast.success(' Payment Successfull', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            transition: Bounce,
+        });
+        router.push("/")
+    }
 
     return (
         <div>
             <div className='mt-3 w-full'>
-                <div className=''>
+                <div className='w-11/12 mx-auto'>
 
-                    <table className='col-span-8 w-full table '>
+                    <table className=' w-full table '>
                         <thead>
                             <tr className=''>
                                 <th className='text-left' style={{ padding: "10px" }}>Image</th>
@@ -27,7 +46,6 @@ const CartComponent = () => {
                                 <th className='text-left'>Category</th>
                                 <th className='text-left'>Brand</th>
                                 <th className='text-left'>Color</th>
-                                <th className='text-left'>Acton</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,15 +68,29 @@ const CartComponent = () => {
                             }
                         </tbody>
                     </table>
-                    <div className='w-11/12 mx-auto'>
-                        Paymment
-                        <div>
-                            <div className='border-b border-dotted'>
-                                <p>Total Amout : {amout} BDT</p>
-                                <p>Discout :<span>{discount}</span> </p>
+                    <div>
+                        {
+                            cart.length > 0 &&
+                            <div className='grid grid-cols-3 w-full justify-between my-4 '>
+                                <div className='flex justify-center items-center'><Link className='bg-indigo-500 animate-bounce text-white px-4 py-2' href={"/shoping"}>Shoping More</Link></div>
+                                <div></div>
+                                <div className='col-span-1'>
+                                    Paymment
+                                    <div className=''>
+                                        <div>
+                                            <div className=''>
+                                                <p>Total Amout : {amout} BDT</p>
+                                                <p className='border-b border-dotted'>Discout : <span>{discount}</span> </p>
+                                            </div>
+                                            <div className='flex justify-between'>
+                                                <p >Amount : {amout - discount} BDT</p> <button onClick={paymentFun} className='bg-indigo-500 text-white px-4 py-2'>Payment Now</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
-                            <p>Amount : {amout - discount}BDT</p>
-                        </div>
+                        }
                     </div>
 
                 </div>

@@ -4,6 +4,7 @@ import { Poppins } from "next/font/google";
 import Context from './Context'
 
 import "./globals.css";
+import { Bounce, ToastContainer } from "react-toastify";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,8 +37,24 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased ${poppins.className}`}
       >
         <Context>
-          {children}
+          
+            {children}
+        
         </Context>
+
+        <ToastContainer
+position="top-right"
+autoClose={2000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick={false}
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="colored"
+transition={Bounce}
+/>
       </body>
     </html>
   );

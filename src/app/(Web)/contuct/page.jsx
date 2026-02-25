@@ -1,9 +1,10 @@
 import React from 'react';
+import ContactForm from '../../../Component/ContuctPage';
 
 const Contuct = () => {
     return (
         <div>
-            Contuct
+            <ContactForm/>
         </div>
     );
 };

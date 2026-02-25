@@ -10,11 +10,13 @@ export default function Nav() {
   const pathName = usePathname()
   const {whiteListData, setWhiteListData} = useContext(CreatCont)
   const {cart, setCart} = useContext(CreatCont)
+ 
+
 
 
   return (
-    <nav className="bg-white shadow-md static top-0">
-      <div className="max-w-7xl mx-auto px-4">
+    <nav className="fixed z-100 w-full bg-white top-0" >
+      <div className=" w-11/12 mx-auto z-400">
         <div className="flex justify-between items-center h-16">
 
           {/* Left Logo */}
@@ -35,9 +37,9 @@ export default function Nav() {
 
             <Link href="/whitelist" className="relative"><Heart /><span className="absolute top-[-9] bg-blue-700 rounded-full text-white w-4  flex justify-center items-center h-4 text-sm right-[-9]">{whiteListData.length}</span></Link>
             
-            <Link href="/login" className="bg-indigo-600 text-white px-6 py-1 rounded hover:bg-indigo-700">
+            {/* <Link href="/login" className="bg-indigo-600 text-white px-6 py-1 rounded hover:bg-indigo-700">
               Login
-            </Link>
+            </Link> */}
 
           </div>
 
@@ -59,9 +61,9 @@ export default function Nav() {
           <Link href="/men" className="block">Men</Link>
           <Link href="/women" className="block">Women</Link>
           <Link href="/cart" className="block"><ShoppingCart /></Link>
-          <Link href="/login" className="block text-indigo-600 font-semibold">
+          {/* <Link href="/login" className="block text-indigo-600 font-semibold">
             Login
-          </Link>
+          </Link> */}
         </div>
       )}
     </nav>
