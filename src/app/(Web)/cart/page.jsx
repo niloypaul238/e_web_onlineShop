@@ -1,6 +1,8 @@
 import React from 'react';
 import CartComponent from '../../../Component/CartComponent';
-
+export const metadata = {
+  title: 'Cart ',
+}
 const Cart = () => {
    
     return (
