@@ -17,7 +17,7 @@ const CartComponent = () => {
         )
     })
     const paymentFun = () => {
-        
+
         toast.success(' Payment Successfull', {
             position: "top-right",
             autoClose: 2000,
@@ -37,37 +37,68 @@ const CartComponent = () => {
             <div className='mt-3 w-full'>
                 <div className='w-11/12 mx-auto'>
 
-                    <table className=' w-full table '>
-                        <thead>
-                            <tr className=''>
-                                <th className='text-left' style={{ padding: "10px" }}>Image</th>
-                                <th className='text-left'>Product Name</th>
-                                <th className='text-left'>Price</th>
-                                <th className='text-left'>Category</th>
-                                <th className='text-left'>Brand</th>
-                                <th className='text-left'>Color</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                cart?.length > 0 ?
-                                    cart.map(item => {
-                                        return (
-                                            <tr key={item.id}>
+                    <div className="bg-white p-8 overflow-auto mt-16">
 
-                                                <td className=''><img src={item?.images} className='h-20' alt={item.images} /></td>
-                                                <td><p className='text-red-500'>{item.name}</p></td>
-                                                <td><p>{item.price} {item.currency}</p></td>
-                                                <td>{item.category}</td>
-                                                <td>{item.brand}</td>
-                                                <td>{item.color}</td>
-                                                {/* <td className=''><span className='flex gap-x-3 items-center w-full h-full'><X onClick={() => deletWhiteList(item.id)} className='text-red-800 cursor-pointer' style={{ color: 'red' }} /><Link href={`/productDetails/${item.id}`} ><ShoppingCart style={{ color: "blue", cursor: 'pointer' }} /></Link></span></td> */}
-                                            </tr>
-                                        )
-                                    }) : <tr className=' text-center'><td className='' colSpan={7}><img src="https://eonbazar.com/images/npf.jpg" alt="" className='h-40 mx-auto' /> </td></tr>
-                            }
-                        </tbody>
-                    </table>
+                        <div className="relative overflow-auto">
+                            <div className="overflow-x-auto">
+                                <table className="min-w-full bg-white border border-gray-500/20 mb-5">
+                                    <thead>
+                                        <tr className="bg-[#2B4DC994] text-center text-xs md:text-sm font-thin text-white">
+                                            <th className="p-0">
+                                                <span className="block py-2 px-3 border-r border-gray-300">SL</span>
+                                            </th>
+                                            <th className="p-0 ">
+                                                <span className="block py-2 px-3 border-r border-gray-300">Image</span>
+                                            </th>
+                                            <th className="p-0 ">
+                                                <span className="block py-2 px-3  border-r border-gray-300">Product Name</span>
+                                            </th>
+                                            <th className="p-0">
+                                                <span className="block py-2 px-3 border-r border-gray-300">Price</span>
+                                            </th>
+                                            <th className="p-0">
+                                                <span className="block py-2 px-3 border-r border-gray-300">Category</span>
+                                            </th>
+                                            <th className="p-0">
+                                                <span className="block py-2 px-3 border-r border-gray-300">Brand</span>
+                                            </th>
+                                            <th className="p-0">
+                                                <span className="block py-2 px-3 border-r border-gray-300">Quantity</span>
+                                            </th>
+                                            <th className="p-0">
+                                                <span className="block py-2 px-3 border-r border-gray-300">Size</span>
+                                            </th>
+                                            <th className="p-0">
+                                                <span className="block py-2 px-3 border-r border-gray-300">Color</span>
+                                            </th>
+                                        
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
+                                            cart?.length > 0 ?
+                                                cart.map((item,index) => {
+                                                    return (
+                                                        <tr key={item.id}>
+                                                            <td className='p-0'><span className='block text-center py-2 px-3'>{index+1}</span></td>
+                                                            <td className=''><img src={item?.images} className='h-10 mx-auto' alt={item.images} /></td>
+                                                            <td><span className='text-red-500 block text-center py-2 px-3'>{item.name}</span></td>
+                                                            <td><span className='block text-center px-1'>{item.price} {item.currency}</span></td>
+                                                            <td><span className='block text-center px-1'>{item.category}</span></td>
+                                                            <td><span className='block text-center px-1'>{item.brand}</span></td>
+                                                            <td><span className='block text-center px-1'>{item.qt}</span></td>
+                                                            <td><span className='block text-center px-1'>{item.size}</span></td>
+                                                            <td><span className='block text-center px-1'>{item.color}</span></td>
+                                                            {/* <td className=''><span className='flex gap-x-3 items-center w-full h-full'><X onClick={() => deletWhiteList(item.id)} className='text-red-800 cursor-pointer' style={{ color: 'red' }} /><Link href={`/productDetails/${item.id}`} ><ShoppingCart style={{ color: "blue", cursor: 'pointer' }} /></Link></span></td> */}
+                                                        </tr>
+                                                    )
+                                                }) : <tr className=' text-center'><td className='' colSpan={7}><img src="https://eonbazar.com/images/npf.jpg" alt="" className='h-40 mx-auto' /> </td></tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                     <div>
                         {
                             cart.length > 0 &&

@@ -15,7 +15,7 @@ export default function Nav() {
 
 
   return (
-    <nav className="fixed z-100 w-full bg-white top-0" >
+    <nav className="fixed shadow-md z-100 w-full bg-white top-0" >
       <div className=" w-11/12 mx-auto z-400">
         <div className="flex justify-between items-center h-16">
 

@@ -1,26 +1,37 @@
+import Link from 'next/link';
 import React from 'react';
 
 const DressGallery = () => {
-    const blogs = [
-        {
-            id: 1,
-            img: "https://images.unsplash.com/photo-1637666532931-b835a227b955?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fGNsb3RoaW5nJTIwc3RvcmV8ZW58MHx8MHx8fDA%3D",
-            date: "27 Sep 2017",
-            title: "Kids to Beautyfull Style",
-        },
-        {
-            id: 2,
-            img: "https://plus.unsplash.com/premium_photo-1661319067088-61e0b9e079b0?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            date: "27 Sep 2017",
-            title: "Styles your Feshon Hero",
-        },
-        {
-            id: 3,
-            img: "https://plus.unsplash.com/premium_photo-1683133261283-78fe47339160?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTY1fHxjbG90aGluZyUyMHN0b3JlfGVufDB8fDB8fHww",
-            date: "27 Sep 2017",
-            title: "As a Full Setup Your Life Dress",
-        },
-    ];
+    const blogs  = [
+  {
+    id: 1,
+    img: "https://images.unsplash.com/photo-1637666532931-b835a227b955?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0",
+    date: "27 Sep 2017",
+    title: "Kids to Beautiful Style",
+    description: "Trendy and comfortable clothing collection specially designed for kids to look stylish and feel confident."
+  },
+  {
+    id: 2,
+    img: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=500&auto=format&fit=crop&q=60",
+    date: "15 Mar 2018",
+    title: "Modern Fashion Wear",
+    description: "A modern fashion collection inspired by street style, perfect for daily casual wear."
+  },
+  {
+    id: 3,
+    img: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=500&auto=format&fit=crop&q=60",
+    date: "05 Aug 2019",
+    title: "Elegant Clothing Store",
+    description: "Elegant and premium quality outfits designed for formal and special occasions."
+  },
+  {
+    id: 4,
+    img: "https://images.unsplash.com/photo-1521334884684-d80222895322?w=500&auto=format&fit=crop&q=60",
+    date: "12 Dec 2020",
+    title: "Urban Style Collection",
+    description: "Urban-inspired clothing with bold colors and unique designs for young fashion lovers."
+  }
+];;
     return (
         <div className='w-11/12 mx-auto mb-20 mt-30'>
 
@@ -83,9 +94,9 @@ const DressGallery = () => {
                                     <h3 className="text-lg font-medium mt-2 hover:text-indigo-500 cursor-pointer">
                                         {blog.title}
                                     </h3>
-                                    <p className="mt-2 text-sm text-gray-600 hover:text-indigo-500 cursor-pointer">
+                                    <Link href={`/Blog/${blog.id}`} className="mt-2 text-sm text-gray-600 hover:text-indigo-500 cursor-pointer">
                                         Read more
-                                    </p>
+                                    </Link>
                                 </div>
                             </div>
                         ))}

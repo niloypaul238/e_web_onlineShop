@@ -42,7 +42,6 @@ export default function ContactForm() {
     } else {
       setErrors({});
       alert("Form submitted successfully!");
-      console.log(formData);
     }
   };
 

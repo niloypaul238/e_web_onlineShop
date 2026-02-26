@@ -73,7 +73,7 @@ const FetureProducs = () => {
                                                 <Heart onClick={() => whitleListFun(item.id)} size={18} />
                                             </button>
                                             <button className="bg-white hover:bg-indigo-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
-                                                <Search size={18} />
+                                                <Link href={"/shoping"}><Search size={18} /></Link> 
                                             </button>
                                         </div>
                                     </div>
