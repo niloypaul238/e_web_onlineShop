@@ -4,6 +4,7 @@ import { CreatCont } from '../app/Context';
 import { Bounce, toast } from 'react-toastify';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { Trash } from 'lucide-react';
 
 const CartComponent = () => {
     const { cart, setCart } = useContext(CreatCont)
@@ -71,6 +72,9 @@ const CartComponent = () => {
                                             <th className="p-0">
                                                 <span className="block py-2 px-3 border-r border-gray-300">Color</span>
                                             </th>
+                                            <th className="p-0">
+                                                <span className="block py-2 px-3 border-r border-gray-300">Action</span>
+                                            </th>
                                         
                                         </tr>
                                     </thead>
@@ -89,7 +93,7 @@ const CartComponent = () => {
                                                             <td><span className='block text-center px-1'>{item.qt}</span></td>
                                                             <td><span className='block text-center px-1'>{item.size}</span></td>
                                                             <td><span className='block text-center px-1'>{item.color}</span></td>
-                                                            {/* <td className=''><span className='flex gap-x-3 items-center w-full h-full'><X onClick={() => deletWhiteList(item.id)} className='text-red-800 cursor-pointer' style={{ color: 'red' }} /><Link href={`/productDetails/${item.id}`} ><ShoppingCart style={{ color: "blue", cursor: 'pointer' }} /></Link></span></td> */}
+                                                            <td className=''><span className='flex justify-center items-center w-full h-full text-red-800'><Trash className='cursor-pointer hover:text-red-600' /></span></td>
                                                         </tr>
                                                     )
                                                 }) : <tr className=' text-center'><td className='' colSpan={7}><img src="https://eonbazar.com/images/npf.jpg" alt="" className='h-40 mx-auto' /> </td></tr>

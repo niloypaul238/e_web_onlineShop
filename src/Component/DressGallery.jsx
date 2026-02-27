@@ -1,37 +1,37 @@
 import Link from 'next/link';
 import React from 'react';
-
+import Image from 'next/image';
 const DressGallery = () => {
-    const blogs  = [
-  {
-    id: 1,
-    img: "https://images.unsplash.com/photo-1637666532931-b835a227b955?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0",
-    date: "27 Sep 2017",
-    title: "Kids to Beautiful Style",
-    description: "Trendy and comfortable clothing collection specially designed for kids to look stylish and feel confident."
-  },
-  {
-    id: 2,
-    img: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=500&auto=format&fit=crop&q=60",
-    date: "15 Mar 2018",
-    title: "Modern Fashion Wear",
-    description: "A modern fashion collection inspired by street style, perfect for daily casual wear."
-  },
-  {
-    id: 3,
-    img: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=500&auto=format&fit=crop&q=60",
-    date: "05 Aug 2019",
-    title: "Elegant Clothing Store",
-    description: "Elegant and premium quality outfits designed for formal and special occasions."
-  },
-  {
-    id: 4,
-    img: "https://images.unsplash.com/photo-1521334884684-d80222895322?w=500&auto=format&fit=crop&q=60",
-    date: "12 Dec 2020",
-    title: "Urban Style Collection",
-    description: "Urban-inspired clothing with bold colors and unique designs for young fashion lovers."
-  }
-];;
+    const blogs = [
+        {
+            id: 1,
+            img: "https://images.unsplash.com/photo-1637666532931-b835a227b955?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0",
+            date: "27 Sep 2017",
+            title: "Kids to Beautiful Style",
+            description: "Trendy and comfortable clothing collection specially designed for kids to look stylish and feel confident."
+        },
+        {
+            id: 2,
+            img: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=500&auto=format&fit=crop&q=60",
+            date: "15 Mar 2018",
+            title: "Modern Fashion Wear",
+            description: "A modern fashion collection inspired by street style, perfect for daily casual wear."
+        },
+        {
+            id: 3,
+            img: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=500&auto=format&fit=crop&q=60",
+            date: "05 Aug 2019",
+            title: "Elegant Clothing Store",
+            description: "Elegant and premium quality outfits designed for formal and special occasions."
+        },
+        {
+            id: 4,
+            img: "https://images.unsplash.com/photo-1521334884684-d80222895322?w=500&auto=format&fit=crop&q=60",
+            date: "12 Dec 2020",
+            title: "Urban Style Collection",
+            description: "Urban-inspired clothing with bold colors and unique designs for young fashion lovers."
+        }
+    ];
     return (
         <div className='w-11/12 mx-auto mb-20 mt-30'>
 
@@ -81,17 +81,24 @@ const DressGallery = () => {
                             <div key={blog.id} className="group">
                                 {/* Image */}
                                 <div className="overflow-hidden">
-                                    <img
+                                    <Image
+                                        className="w-full h-56 object-cover group-hover:scale-110 transition duration-500"
                                         src={blog.img}
                                         alt={blog.title}
-                                        className="w-full h-56 object-cover group-hover:scale-110 transition duration-500"
+                                        width={100}
+                                        height={100}
+                                        priority
+                                        sizes="100vw"
+                                        quality={100}
                                     />
+
+
                                 </div>
 
                                 {/* Content */}
                                 <div className="mt-4">
                                     <p className="text-indigo-500 text-sm">{blog.date}</p>
-                                    <h3 className="text-lg font-medium mt-2 hover:text-indigo-500 cursor-pointer">
+                                    <h3 className="text-lg font-medium mt-2 hover:text-indigo-500 ">
                                         {blog.title}
                                     </h3>
                                     <Link href={`/Blog/${blog.id}`} className="mt-2 text-sm text-gray-600 hover:text-indigo-500 cursor-pointer">
