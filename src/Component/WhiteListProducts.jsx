@@ -40,7 +40,7 @@ const WhiteListProducts = () => {
                                             <td className=''>
                                                 <Image className='mx-auto'
                                                     src={item.images}
-                                                    alt={item.images}
+                                                    alt={item.name}
                                                     width={50}
                                                     height={100}
                                                     priority

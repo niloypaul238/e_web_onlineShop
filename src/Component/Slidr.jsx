@@ -115,8 +115,8 @@ const Slidr = () => {
                     <Image
                       src={slide.image}
                       alt={slide.image}
-                      width={200}
-                      height={200}
+                      width={250}
+                      height={250}
                       priority
                       sizes="100vw"
                       quality={100}

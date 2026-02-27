@@ -94,7 +94,7 @@ const CartComponent = () => {
                                                             <td className=''>
                                                                 <Image className='mx-auto'
                                                                     src={item.images[0]}
-                                                                    alt={item.images}
+                                                                    alt={item.name}
                                                                     width={50}
                                                                     height={50}
                                                                     priority
@@ -110,12 +110,19 @@ const CartComponent = () => {
                                                             <td><span className='block text-center px-1'>{item.qt}</span></td>
                                                             <td><span className='block text-center px-1'>{item.size}</span></td>
                                                             <td><span className='block text-center px-1'>{item.color}</span></td>
-                                                            <td className=''><span className='flex justify-center items-center w-full h-full text-red-800'><Trash onClick={()=>delteItem(item.id)} className='cursor-pointer hover:text-red-600' /></span></td>
+                                                            <td className=''><span className='flex justify-center items-center w-full h-full text-red-800'><Trash onClick={() => delteItem(item.id)} className='cursor-pointer hover:text-red-600' /></span></td>
                                                         </tr>
                                                     )
                                                 }) : <tr className=' text-center'><td className='' colSpan={10}>
-                                                    <Image src="https://eonbazar.com/images/npf.jpg" alt="no" width={30} height={30} className='
-                                                     mx-auto' /> </td></tr>
+                                                    <Image
+                                                        src="https://eonbazar.com/images/npf.jpg"
+                                                        alt="no"
+                                                        width={30}
+                                                        height={30}
+                                                        className='mx-auto'
+                                                    />
+                                                </td>
+                                                </tr>
                                         }
                                     </tbody>
                                 </table>

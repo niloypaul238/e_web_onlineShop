@@ -4,6 +4,8 @@ import Link from 'next/link';
 import React, { useContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { CreatCont } from '../app/Context';
+import { MoonLoader } from 'react-spinners';
+import Image from 'next/image';
 
 const Catagory = () => {
     const [alldata, setAlldata] = useState([])
@@ -11,18 +13,33 @@ const Catagory = () => {
     const [cata, setCata] = useState(["All"])
     const [filterInput, setFilterInput] = useState(["All"])
     const [active, setActive] = useState("All")
+    const [erro, setErro] = useState(null)
+    const [loading, setLoading] = useState(false)
 
     const [inputType, setInputType] = useState('')
     const { whiteListData, setWhiteListData } = useContext(CreatCont)
 
+    // fetch datta
+    const fetchData = async () => {
+        setLoading(true)
+
+
+        try {
+            const fet = await fetch('https://e-web-onlineshop.onrender.com/orders')
+            const data = await fet.json()
+            setAlldata(data)
+            setShowProduct(data)
+        } catch (error) {
+            setErro(error.message)
+        } finally {
+            setLoading(false)
+        }
+    }
+
     useEffect(() => {
-        fetch('https://e-web-onlineshop.onrender.com/orders')
-            .then(res => res.json())
-            .then(data => {
-                setAlldata(data)
-                setShowProduct(data)
-            })
+        fetchData()
     }, [])
+
 
 
 
@@ -34,7 +51,7 @@ const Catagory = () => {
             setFilterInput([...cata, data.category])
         }
     })
-    
+
 
     const onCatagory = (e) => {
         setInputType(e);
@@ -81,6 +98,17 @@ const Catagory = () => {
         }
     }
 
+
+    if (loading) {
+        return <div className='flex justify-center items-center w-full'><MoonLoader
+            size={28}
+            speedMultiplier={1}
+        /></div>
+    }
+    if (erro) {
+        return <p className='text-center uppercase text-red-500'>{erro}</p>
+    }
+
     return (
         <div className='sm:grid w-11/12 mx-auto gap-5 my-10 grid-cols-12'>
             <div className='relative  col-span-3 group rounded-2xl'>
@@ -119,7 +147,7 @@ const Catagory = () => {
 
                                     <div className='md:h-50 overflow-hidden bg-white'>
                                         <div>
-                                            <div className='justify-center group-hover:top-1/2 opacity-0 group-hover:opacity-100 transition-top duration-300
+                                            <div className='justify-center group-hover:top-1/2 md:opacity-0 opacity-100 group-hover:opacity-100 transition-top duration-300
                                           gap-x-3 top-3/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex w-full absolute'>
                                                 <Heart onClick={() => whitleListFun(item.id)} className='bg-indigo-600 rounded-full text-white p-2 cursor-pointer hover:bg-white hover:text-indigo-600 transition-bg duration-500' size={30} />
                                                 <Eye onClick={() => { model(item.id) }} className='bg-indigo-600 rounded-full text-white p-2 cursor-pointer hover:bg-white hover:text-indigo-600 transition-bg duration-500' size={30} />
@@ -128,7 +156,16 @@ const Catagory = () => {
                                                 </Link>
 
                                             </div>
-                                            <img src={item.images} className='h-full' alt="" />
+                                            <Image className="w-full transition duration-500 group-hover:scale-130 h-40 md:h-87.5 object-cover"
+                                                src={item.images}
+                                                alt={item.name}
+                                                width={100}
+                                                height={100}
+                                                priority
+                                                sizes="100vw"
+                                                quality={100}
+                                            />
+                                            {/* <img  className='h-full' alt="" /> */}
                                         </div>
                                     </div>
 
