@@ -6,28 +6,27 @@ import { CreatCont } from '../app/Context';
 import { Bounce, toast } from 'react-toastify';
 import Image from 'next/image';
 import { MoonLoader } from 'react-spinners';
-import Link from 'next/link';
 const Details = () => {
     const { id } = useParams();
     const [product, setProduct] = useState([]);
     const { whiteListData, setWhiteListData } = useContext(CreatCont);
     const { cart, setCart } = useContext(CreatCont)
     const router = useRouter()
-    const [quantity, setQuantitiy] = useState(0)
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(false)
+    const [quan, setQuan] = useState(1)
     const [size, setSize] = useState("")
-    // const [info, setInfo] = useState(
-    //     {
-    //         size: size,
-    //         qt: quantity
-    //     }
-    
-   
+    const [info, setInfo] = useState(
+        {
+            size: size,
+            qt: quan
+        })
+
+
     const clientDataFetch = async () => {
         setLoading(true)
         try {
-            const fetchr =await fetch('https://e-web-onlineshop.onrender.com/orders')
+            const fetchr = await fetch('https://e-web-onlineshop.onrender.com/orders')
             const data = await fetchr.json()
             setProduct(data)
         } catch (error) {
@@ -41,6 +40,28 @@ const Details = () => {
     }, [])
     const filterProduct = product?.find(item => item.id === id)
 
+
+    const quhandler = (e) => {
+        const tar = e.target.textContent
+        const infoCo = { ...info }
+
+        if (tar == "+") {
+            setQuan(quan + 1)
+            infoCo.qt = quan + 1
+        } else if (tar == "-") {
+            setQuan(quan - 1)
+            infoCo.qt = quan - 1
+        }
+        setInfo(infoCo);
+    }
+    const objectHandler = (e) => {
+        const copy = { ...info }
+        const tar = e.target.name;
+        const val = e.target.textContent
+        copy[tar] = val
+        setInfo(copy)
+    }
+
     const whitleListFun = () => {
         const findPro = whiteListData?.find(item => item?.id === id)
         if (findPro) {
@@ -53,6 +74,7 @@ const Details = () => {
     }
 
     const addToCart = () => {
+        const copys = { ...info }
         const findPro = cart.find(item => item?.id === id)
         if (findPro) {
             alert("Already added cart")
@@ -69,11 +91,13 @@ const Details = () => {
                 theme: "colored",
                 transition: Bounce,
             });
-            const newObj = { ...filterProduct,findPro }
+
+            const newObj = { ...filterProduct, ...copys }
             setCart([...cart, newObj])
 
         }
     }
+
 
     if (loading) {
         return <div className='flex justify-center items-center w-full'><MoonLoader
@@ -93,12 +117,12 @@ const Details = () => {
                     src={filterProduct?.images[0]}
                     width={100}
                     height={100}
-                    alt={filterProduct?.name}
+                    alt={''}
                     priority
                     sizes="100vw"
-                    quality={100} 
+                    quality={100}
                     className='w-full h-full'
-                    />
+                />
 
                 <div className='leading-6'>
                     <p className='text-2xl'>{filterProduct?.name}</p>
@@ -110,7 +134,7 @@ const Details = () => {
                             {
                                 filterProduct?.sizes?.map(item => {
                                     return (
-                                        <span name={`${size}`} onClick={() => { setSize(item) }} key={item} className={`px-3 rounded bg-indigo-400 cursor-pointer  ${item == size && "bg-white border"}`}>{item}</span>
+                                        <button name="size" onClick={(e) => { { setSize(item); objectHandler(e) } }} key={item} className={`px-3 rounded bg-indigo-400 cursor-pointer  ${item == size && "bg-white border"}`}>{item}</button>
                                     )
                                 })
                             }
@@ -118,9 +142,9 @@ const Details = () => {
                         <div className='mt-2'>
                             <p className=''>Quantity</p>
                             <div className='flex '>
-                                <span name="mainus" onClick={() => setQuantitiy(quantity < 1 ? quantity == 1 : quantity - 1)} className='border cursor-pointer px-3'>-</span>
-                                <span className='border px-3'>{quantity}</span>
-                                <span name="plus" onClick={() => setQuantitiy(quantity + 1)} className='border px-3 cursor-pointer'>+</span>
+                                <span onClick={quhandler} name="qt" className='border cursor-pointer px-3'>-</span>
+                                <span className='border px-3'>{quan}</span>
+                                <span onClick={quhandler} name="qt" className='border px-3 cursor-pointer'>+</span>
                             </div>
                         </div>
                         <div className='mt-3 flex items-center gap-x-3.5'>
@@ -128,7 +152,7 @@ const Details = () => {
                         </div>
                     </div>
                 </div>
-                <div className=''><button className='bg-indigo-400 text-white float-end w-30 p-2 mt-3' onClick={()=>router.back()}>Back</button></div>
+                <div className=''><button className='bg-indigo-400 text-white float-end w-30 p-2 mt-3' onClick={() => router.back()}>Back</button></div>
             </div>
         </div>
 
