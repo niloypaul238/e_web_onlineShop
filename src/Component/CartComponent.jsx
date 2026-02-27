@@ -23,10 +23,10 @@ const CartComponent = () => {
 
         toast.success(' Payment Successfull', {
             position: "top-right",
-            autoClose: 2000,
+            autoClose: 1500,
             hideProgressBar: false,
             closeOnClick: false,
-            pauseOnHover: true,
+            pauseOnHover: false,
             draggable: true,
             progress: undefined,
             theme: "colored",
@@ -44,7 +44,7 @@ const CartComponent = () => {
             <div className='mt-3 w-full'>
                 <div className='w-11/12 mx-auto'>
 
-                    <div className="bg-white p-8 overflow-auto mt-16">
+                    <div className="bg-white p-8 overflow-auto ">
 
                         <div className="relative overflow-auto">
                             <div className="overflow-x-auto">
@@ -96,7 +96,7 @@ const CartComponent = () => {
                                                                     src={item.images[0]}
                                                                     alt={item.images}
                                                                     width={50}
-                                                                    height={100}
+                                                                    height={50}
                                                                     priority
                                                                     sizes="100vw"
                                                                     quality={100}
@@ -113,7 +113,9 @@ const CartComponent = () => {
                                                             <td className=''><span className='flex justify-center items-center w-full h-full text-red-800'><Trash onClick={()=>delteItem(item.id)} className='cursor-pointer hover:text-red-600' /></span></td>
                                                         </tr>
                                                     )
-                                                }) : <tr className=' text-center'><td className='' colSpan={10}><Image src="https://eonbazar.com/images/npf.jpg" alt="no" width={30} height={30} className='h-40 mx-auto' /> </td></tr>
+                                                }) : <tr className=' text-center'><td className='' colSpan={10}>
+                                                    <Image src="https://eonbazar.com/images/npf.jpg" alt="no" width={30} height={30} className='
+                                                     mx-auto' /> </td></tr>
                                         }
                                     </tbody>
                                 </table>
@@ -123,7 +125,7 @@ const CartComponent = () => {
                     <div>
                         {
                             cart.length > 0 &&
-                            <div className='grid grid-cols-3 w-full justify-between my-4 '>
+                            <div className='md:grid grid-cols-3 w-full justify-between my-4 '>
                                 <div className='flex justify-center items-center'><Link className='bg-indigo-500 animate-bounce text-white px-4 py-2' href={"/shoping"}>Shoping More</Link></div>
                                 <div></div>
                                 <div className='col-span-1'>
@@ -134,8 +136,8 @@ const CartComponent = () => {
                                                 <p>Total Amout : {amout} BDT</p>
                                                 <p className='border-b border-dotted'>Discout : <span>{discount}</span> </p>
                                             </div>
-                                            <div className='flex justify-between'>
-                                                <p >Amount : {amout - discount} BDT</p> <button onClick={paymentFun} className='bg-indigo-500 text-white px-4 py-2'>Payment Now</button>
+                                            <div className='flex flex-col gap-3  justify-between'>
+                                                <p >Amount : {amout - discount} BDT</p> <button onClick={paymentFun} className='bg-indigo-500 text-white text-sm px-4 py-2'>Payment Now</button>
                                             </div>
                                         </div>
                                     </div>

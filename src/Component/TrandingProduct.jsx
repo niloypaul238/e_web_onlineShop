@@ -28,7 +28,7 @@ const TrandingProduct = () => {
             setProduct(tranding);
         } catch (error) {
 
-            setError(error.message)
+            setErro(error.message)
         } finally {
             setLoading(false)
         }
@@ -89,50 +89,58 @@ const TrandingProduct = () => {
                     >
                         {product.map((item) => (
                             <SwiperSlide key={item.id}>
-                                <div className="group relative text-center">
-                                    {/* Image */}
-                                    <div className="relative overflow-hidden">
-                                        <Image className="w-full transition duration-500 group-hover:scale-130 h-40 md:h-87.5 object-cover"
-                                            src={item.images[0]}
-                                            width={20}
-                                            height={20}
-                                            alt={item.name}
-                                            priority
-                                            sizes="100vw"
-                                            quality={100}
-                                        />
-                                        {/* <img
+                                <div>
+                                    <div href={`/productDetails/${item.id}`} className={`group relative text-center border md:border-0 border-gray-500/50 p-2 md:p-0`}>
+                                        {/* Image */}
+                                        <div className="relative overflow-hidden">
+                                            <Image className="w-full transition duration-500 group-hover:scale-130 h-40 md:h-87.5 object-cover"
+                                                src={item?.images[0]}
+                                                width={20}
+                                                height={20}
+                                                alt={item?.name}
+                                                priority
+                                                sizes="100vw"
+                                                quality={100}
+                                            />
+                                            {/* <img
                                             src=
                                             alt=
                                             
                                         /> */}
 
-                                        {/* Hover Icons */}
-                                        <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition duration-700 ease-in-out">
-                                            <Link href={`/productDetails/${item.id}`} className="bg-white hover:bg-red-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
-                                                <ShoppingCart size={18} />
-                                            </Link>
-                                            <button className="bg-white hover:bg-red-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
-                                                <Heart onClick={() => whitleListFun(item.id)} size={18} />
-                                            </button>
-                                            <button className="bg-white hover:bg-red-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
-                                                <Search size={18} />
-                                            </button>
+                                            {/* Hover Icons */}
+                                            <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition duration-700 ease-in-out">
+                                                <Link href={`/productDetails/${item.id}`} className="bg-white hover:bg-red-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
+                                                    <ShoppingCart size={18} />
+                                                </Link>
+                                                <button className="bg-white hover:bg-red-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
+                                                    <Heart onClick={() => whitleListFun(item.id)} size={18} />
+                                                </button>
+                                                <button className="bg-white hover:bg-red-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
+                                                    <Search size={18} />
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        {/* Info */}
+                                        <h3 className="mt-4 text-sm font-medium group-hover:text-red-500">
+                                            {item.name}
+                                        </h3>
+
+                                        <div className="mt-1s md:flex flex-col text-sm">
+                                            <div>
+                                                <span className="font-semibold">${item.price}.00</span>
+                                                <span className="ml-2 line-through text-gray-400">
+                                                    ${item.oldPrice}.00
+                                                </span>
+                                            </div>
+
+
+                                            <Link href={`/productDetails/${item.id}`} className='bg-indigo-500 flex justify-center md:hidden w-full p-1 mt-2 text-white'>Read More</Link>
                                         </div>
                                     </div>
-
-                                    {/* Info */}
-                                    <h3 className="mt-4 text-sm font-medium group-hover:text-red-500">
-                                        {item.name}
-                                    </h3>
-
-                                    <p className="mt-1 text-sm">
-                                        <span className="font-semibold">${item.price}.00</span>
-                                        <span className="ml-2 line-through text-gray-400">
-                                            ${item.oldPrice}.00
-                                        </span>
-                                    </p>
                                 </div>
+
                             </SwiperSlide>
                         ))}
                     </Swiper>

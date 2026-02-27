@@ -57,7 +57,18 @@ const WhiteListProducts = () => {
                                             <td className=''><span className='flex gap-x-3 items-center w-full h-full'><X onClick={() => deletWhiteList(item.id)} className='text-red-800 cursor-pointer' style={{ color: 'red' }} /><Link href={`/productDetails/${item.id}`} ><ShoppingCart style={{ color: "blue", cursor: 'pointer' }} /></Link></span></td>
                                         </tr>
                                     )
-                                }) : <tr className=' text-center'><td className='' colSpan={7}><img src="https://eonbazar.com/images/npf.jpg" alt="" className='h-40 mx-auto' /> </td></tr>
+                                }) : <tr className=' text-center'>
+                                    <td className='mt-2' colSpan={7}>
+                                        <Image
+                                            src="https://eonbazar.com/images/npf.jpg"
+                                            alt=""
+                                            className='h-20 mx-auto'
+                                            width={100}
+                                            height={50}
+                                        />
+
+                                    </td>
+                                </tr>
                         }
                     </tbody>
                 </table>

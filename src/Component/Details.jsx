@@ -82,10 +82,10 @@ const Details = () => {
         } else {
             toast.success('Add to Cart successfull !', {
                 position: "top-right",
-                autoClose: 2000,
+                autoClose: 1500,
                 hideProgressBar: false,
                 closeOnClick: false,
-                pauseOnHover: true,
+                pauseOnHover: false,
                 draggable: true,
                 progress: undefined,
                 theme: "colored",
@@ -114,7 +114,7 @@ const Details = () => {
         <div className='w-11/12 my-10 mx-auto '>
             <div className='grid  gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3'>
                 <Image
-                    src={filterProduct?.images[0]}
+                    src={filterProduct? filterProduct.images[0] : "https://images.unsplash.com/photo-1557683304-673a23048d34?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDN8fGJsdWUlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww"}
                     width={100}
                     height={100}
                     alt={''}
@@ -152,7 +152,7 @@ const Details = () => {
                         </div>
                     </div>
                 </div>
-                <div className=''><button className='bg-indigo-400 text-white float-end w-30 p-2 mt-3' onClick={() => router.back()}>Back</button></div>
+                <div className=''><button className='bg-indigo-400 text-white md:float-end w-30 p-2 mt-3' onClick={() => router.back()}>Back</button></div>
             </div>
         </div>
 

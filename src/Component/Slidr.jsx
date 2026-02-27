@@ -5,8 +5,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { div } from 'framer-motion/client';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Slidr = () => {
   const slides = [
@@ -27,28 +27,28 @@ const Slidr = () => {
   ];
   const method = [
     {
-      id:1,
-      icon:'https://preview.colorlib.com/theme/capitalshop/assets/img/icon/services1.svg',
-      title:'Fast & Free Delivery',
-      dis:'Free delivery on all orders'
+      id: 1,
+      icon: 'https://preview.colorlib.com/theme/capitalshop/assets/img/icon/services1.svg',
+      title: 'Fast & Free Delivery',
+      dis: 'Free delivery on all orders'
     },
     {
-      id:2,
-      icon:'https://preview.colorlib.com/theme/capitalshop/assets/img/icon/services2.svg',
-      title:'Secure Payment',
-      dis:'Free delivery on all orders'
+      id: 2,
+      icon: 'https://preview.colorlib.com/theme/capitalshop/assets/img/icon/services2.svg',
+      title: 'Secure Payment',
+      dis: 'Free delivery on all orders'
     },
     {
-      id:3,
-      icon:'https://preview.colorlib.com/theme/capitalshop/assets/img/icon/services3.svg',
-      title:'Money Back Guarantee',
-      dis:'Free delivery on all orders'
+      id: 3,
+      icon: 'https://preview.colorlib.com/theme/capitalshop/assets/img/icon/services3.svg',
+      title: 'Money Back Guarantee',
+      dis: 'Free delivery on all orders'
     },
     {
-      id:4,
-      icon:'https://preview.colorlib.com/theme/capitalshop/assets/img/icon/services4.svg',
-      title:'Online Support',
-      dis:'Free delivery on all orders'
+      id: 4,
+      icon: 'https://preview.colorlib.com/theme/capitalshop/assets/img/icon/services4.svg',
+      title: 'Online Support',
+      dis: 'Free delivery on all orders'
     }
   ]
   return (
@@ -60,7 +60,9 @@ const Slidr = () => {
         loop
         className="h-100 md:h-125]"
       >
+
         {slides.map((slide, index) => (
+
           <SwiperSlide key={index}>
             <div
               className={`w-full h-full ${slide.bg} flex items-center px-6 md:px-16`}
@@ -109,7 +111,18 @@ const Slidr = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.9 }}
                     viewport={{ once: false }}>
-                    <img src="/Rectangle 3 (1).png" className='h-40 md:h-auto' alt="ds" />
+
+                    <Image
+                      src={slide.image}
+                      alt={slide.image}
+                      width={200}
+                      height={200}
+                      priority
+                      sizes="100vw"
+                      quality={100}
+                      className='h-40 object-contain mx-auto'
+                    />
+                    {/* <img src="/Rectangle 3 (1).png"  alt="ds" /> */}
 
                   </motion.div>
                 </div>
@@ -119,20 +132,29 @@ const Slidr = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className='mt-20 sm:flex w-11/12 mx-auto '>
-          {
-            method.map(item => {
-              return (
-                <div key={item.id} className='w-full flex flex-col items-center justify-center space-y-2'>
-                  <img src={item.icon} alt="" />
-                  <div className='flex flex-col items-center justify-center space-y-2'>
-                      <h1>{item.title}</h1>
-                      <h1 className='text-gray-400'>{item.dis}</h1>
-                  </div>
+      <div className='mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-y-5 w-11/12 mx-auto '>
+        {
+          method.map(item => {
+            return (
+              <div key={item.id} className='w-full border sm:border-0 border-indigo-600/40 p-4  rounded flex flex-col items-center justify-center space-y-2'>
+                <Image
+                  src={item.icon}
+                  alt={item.icon}
+                  width={50}
+                  height={50}
+                  priority
+                  sizes="100vw"
+                  quality={100}
+                  className='object-contain mx-auto'
+                />
+                <div className='flex flex-col items-center justify-center space-y-2'>
+                  <h1>{item.title}</h1>
+                  <h1 className='text-gray-400'>{item.dis}</h1>
                 </div>
-              )
-            })
-          }
+              </div>
+            )
+          })
+        }
       </div>
     </div>
   );

@@ -57,10 +57,9 @@ export default function Nav() {
       {open && (
         <div className="md:hidden bg-white px-4 pb-4 space-y-3">
           <Link href="/" className="block">Home</Link>
-          <Link href="/shop" className="block">Shop</Link>
-          <Link href="/men" className="block">Men</Link>
-          <Link href="/women" className="block">Women</Link>
-          <Link href="/cart" className="block"><ShoppingCart /></Link>
+          <Link href="/shoping" className={`block ${pathName == "/" && "text-indigo-600 font-semibold"}`}>Shop</Link>
+          <Link href="/cart" className={`block ${pathName == "/shoping" && "text-indigo-600 font-semibold"}`}><ShoppingCart /></Link>
+          <Link href="/whitelist" className={`block ${pathName == "/whitelist" && "text-indigo-600 font-semibold"}`}><Heart /></Link>
           {/* <Link href="/login" className="block text-indigo-600 font-semibold">
             Login
           </Link> */}

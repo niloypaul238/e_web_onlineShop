@@ -8,6 +8,7 @@ import { Heart, Search, ShoppingCart } from 'lucide-react';
 import Link from 'next/link';
 import { CreatCont } from '@/app/Context';
 import { MoonLoader } from 'react-spinners';
+import Image from 'next/image';
 
 const FetureProducs = () => {
     const [product, setProduct] = useState([])
@@ -81,15 +82,24 @@ const FetureProducs = () => {
                                 <div className="group cursor-pointer relative text-center">
                                     {/* Image */}
                                     <div className="relative overflow-hidden">
-                                        <img
+                                        <Image className="w-full transition duration-500 group-hover:scale-130 h-40 md:h-87.5 object-cover"
+                                            src={item?.images[0]}
+                                            width={20}
+                                            height={20}
+                                            alt={item?.name}
+                                            priority
+                                            sizes="100vw"
+                                            quality={100}
+                                        />
+                                        {/* <img
                                             src={item.images}
                                             alt={item.name}
 
                                             className="w-full transition duration-500 group-hover:scale-130 h-62.5 object-cover"
-                                        />
+                                        /> */}
 
                                         {/* Hover Icons */}
-                                        <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition duration-700 ease-in-out">
+                                        <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-100 md:opacity-0 group-hover:opacity-100 transition duration-700 ease-in-out">
                                             <Link href={`/productDetails/${item.id}`} className="bg-white hover:bg-indigo-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
                                                 <ShoppingCart size={18} />
                                             </Link>
@@ -107,12 +117,12 @@ const FetureProducs = () => {
                                         {item.name}
                                     </h3>
 
-                                    <p className="mt-1 text-sm">
+                                    <div className="mt-1 text-sm">
                                         <span className="font-semibold">${item.price}.00</span>
                                         <span className="ml-2 line-through text-gray-400">
                                             ${item.oldPrice}.00
                                         </span>
-                                    </p>
+                                    </div>
                                 </div>
                             </SwiperSlide>
                         ))}
