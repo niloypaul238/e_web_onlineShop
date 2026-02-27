@@ -20,6 +20,7 @@ const nextConfig: NextConfig = {
         hostname:'eonbazar.com'
       }
     ],
+    qualities: [75, 100],
     
   },
 };

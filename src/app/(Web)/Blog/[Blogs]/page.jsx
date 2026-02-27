@@ -49,8 +49,8 @@ const Blogs = async ({ params }) => {
                 <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
 
                     {/* Image */}
-                    <div className="w-full h-87.5">
-                        <Image className="w-full transition duration-500 group-hover:scale-130 h-40 md:h-87.5 object-cover"
+                    <div className="w-full h-full md:h-87.5">
+                        <Image className="w-full transition duration-500 group-hover:scale-130 h-40  object-cover"
                             src={findBlogs.img}
                             alt={findBlogs.title}
                             width={20}

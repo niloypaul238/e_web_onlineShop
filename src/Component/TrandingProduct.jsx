@@ -54,7 +54,7 @@ const TrandingProduct = () => {
         /></div>
     }
     if (erro) {
-        return <p className='text-center uppercase text-red-500'>{erro}</p>
+        return <p className='text-center uppercase text-indigo-500'>{erro}</p>
     }
 
     return (
@@ -110,20 +110,20 @@ const TrandingProduct = () => {
 
                                             {/* Hover Icons */}
                                             <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition duration-700 ease-in-out">
-                                                <Link href={`/productDetails/${item.id}`} className="bg-white hover:bg-red-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
+                                                <Link href={`/productDetails/${item.id}`} className="bg-white hover:bg-indigo-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
                                                     <ShoppingCart size={18} />
                                                 </Link>
-                                                <button className="bg-white hover:bg-red-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
+                                                <button className="bg-white hover:bg-indigo-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
                                                     <Heart onClick={() => whitleListFun(item.id)} size={18} />
                                                 </button>
-                                                <button className="bg-white hover:bg-red-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
-                                                    <Search size={18} />
+                                                <button className="bg-white hover:bg-indigo-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
+                                                    <Link href={"/shoping"}><Search size={18} /></Link>
                                                 </button>
                                             </div>
                                         </div>
 
                                         {/* Info */}
-                                        <h3 className="mt-4 text-sm font-medium group-hover:text-red-500">
+                                        <h3 className="mt-4 text-sm font-medium group-hover:text-indigo-500">
                                             {item.name}
                                         </h3>
 

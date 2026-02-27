@@ -16,6 +16,7 @@ const Catagory = () => {
     const [erro, setErro] = useState(null)
     const [loading, setLoading] = useState(false)
 
+
     const [inputType, setInputType] = useState('')
     const { whiteListData, setWhiteListData } = useContext(CreatCont)
 
@@ -89,6 +90,7 @@ const Catagory = () => {
     }
 
     const whitleListFun = (e) => {
+        alert('s')
         const filterProduct = alldata.find(item => item.id == e)
         const findPro = whiteListData.find(item => item?.id === e)
         if (findPro) {
@@ -131,7 +133,7 @@ const Catagory = () => {
                     {
                         shwoProduct.map(item => {
                             return (
-                                <div key={item.id} className='overflow-hidden cursor-pointer p-4 group relative flex flex-col justify-center items-center'>
+                                <div key={item.id} className='overflow-hidden  p-4 group relative flex flex-col justify-center items-center'>
 
                                     <span
                                         className="absolute rounded top-0 right-0 h-px w-0 bg-indigo-500 transition-all duration-200 group-hover:w-full"></span>
@@ -148,7 +150,7 @@ const Catagory = () => {
                                     <div className='md:h-50 overflow-hidden bg-white'>
                                         <div>
                                             <div className='justify-center group-hover:top-1/2 md:opacity-0 opacity-100 group-hover:opacity-100 transition-top duration-300
-                                          gap-x-3 top-3/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex w-full absolute'>
+                                          gap-x-3 top-3/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex w-full z-200 absolute'>
                                                 <Heart onClick={() => whitleListFun(item.id)} className='bg-indigo-600 rounded-full text-white p-2 cursor-pointer hover:bg-white hover:text-indigo-600 transition-bg duration-500' size={30} />
                                                 <Eye onClick={() => { model(item.id) }} className='bg-indigo-600 rounded-full text-white p-2 cursor-pointer hover:bg-white hover:text-indigo-600 transition-bg duration-500' size={30} />
                                                 <Link href={`/productDetails/${item.id}`}>
@@ -156,16 +158,24 @@ const Catagory = () => {
                                                 </Link>
 
                                             </div>
-                                            <Image className="w-full transition duration-500 group-hover:scale-130 h-40 md:h-87.5 object-cover"
-                                                src={item.images}
-                                                alt={item.name}
-                                                width={100}
-                                                height={100}
+
+                                            
+
+                                            <Image
+                                                className={`w-full h-full object-cover transition duration-500 group-hover:scale-130
+                                                    }`}
+                                                src={
+                                                    item
+                                                        ? item.images[0]
+                                                        : "https://img.freepik.com/free-vector/white-blurred-background_1034-249.jpg?ga=GA1.1.1578497597.1748969612&semt=ais_rp_progressive&w=740&q=80"}
+                                                alt={item.name || "Product image"}
+                                                width={500}
+                                                height={500}
                                                 priority
                                                 sizes="100vw"
                                                 quality={100}
+                                                onLoadingComplete={() => setLoading(false)}
                                             />
-                                            {/* <img  className='h-full' alt="" /> */}
                                         </div>
                                     </div>
 

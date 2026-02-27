@@ -16,6 +16,7 @@ const Details = () => {
     const [loading, setLoading] = useState(false)
     const [quan, setQuan] = useState(1)
     const [size, setSize] = useState("")
+    const [whiteListToggle, setWhiteListToggle] = useState(false)
     const [info, setInfo] = useState(
         {
             size: size,
@@ -23,6 +24,8 @@ const Details = () => {
         })
 
 
+    const filterProduct = product?.find(item => item.id === id)
+    console.log(filterProduct);
     const clientDataFetch = async () => {
         setLoading(true)
         try {
@@ -38,7 +41,8 @@ const Details = () => {
     useEffect(() => {
         clientDataFetch()
     }, [])
-    const filterProduct = product?.find(item => item.id === id)
+
+
 
 
     const quhandler = (e) => {
@@ -63,10 +67,10 @@ const Details = () => {
     }
 
     const whitleListFun = () => {
-        const findPro = whiteListData?.find(item => item?.id === id)
-        if (findPro) {
-            alert("Already added ")
-            router.push('/whitelist')
+        setWhiteListToggle(!whiteListToggle)
+        const findPro = whiteListData?.filter(item => item?.id !== id)
+        if (whiteListToggle) {
+            setWhiteListData(findPro)
         } else {
             setWhiteListData([...whiteListData, filterProduct])
 
@@ -114,14 +118,18 @@ const Details = () => {
         <div className='w-11/12 my-10 mx-auto '>
             <div className='grid  gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3'>
                 <Image
-                    src={filterProduct? filterProduct.images[0] : "https://images.unsplash.com/photo-1557683304-673a23048d34?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDN8fGJsdWUlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww"}
+                    src={
+                        filterProduct
+                            ? filterProduct.images[0]
+                            : "https://images.unsplash.com/photo-1557683304-673a23048d34?w=500&auto=format&fit=crop&q=60"
+                    }
                     width={100}
                     height={100}
-                    alt={filterProduct?.name}
+                    alt={filterProduct?.name || "Product image"}
                     priority
                     sizes="100vw"
                     quality={100}
-                    className='w-full h-full'
+                    className="w-full h-full"
                 />
 
                 <div className='leading-6'>
@@ -148,7 +156,8 @@ const Details = () => {
                             </div>
                         </div>
                         <div className='mt-3 flex items-center gap-x-3.5'>
-                            <button onClick={addToCart} className='flex cursor-pointer  bg-indigo-400 text-white float-end  p-2 mt-3'>Add To Cart<ShoppingCart /></button> <Heart onClick={whitleListFun} size={50} className='pl-4 cursor-pointer ' />
+                            <button onClick={addToCart} className='flex cursor-pointer  bg-indigo-400 text-white   p-2 mt-3'>Add To Cart<ShoppingCart /></button>
+                            <button className={` p-2 mt-3 rounded-full cursor-pointer ${whiteListToggle == true && 'bg-indigo-600 text-white  flex justify-center items-center '}`} onClick={() => { whitleListFun() }}><Heart size={20} /></button>
                         </div>
                     </div>
                 </div>
