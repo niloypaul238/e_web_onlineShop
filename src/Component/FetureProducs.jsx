@@ -7,18 +7,32 @@ import { Navigation } from 'swiper/modules';
 import { Heart, Search, ShoppingCart } from 'lucide-react';
 import Link from 'next/link';
 import { CreatCont } from '@/app/Context';
+import { MoonLoader } from 'react-spinners';
 
 const FetureProducs = () => {
     const [product, setProduct] = useState([])
     const { whiteListData, setWhiteListData } = useContext(CreatCont)
+    const [error, setError] = useState(null)
+    const [loading, setLoading] = useState(false)
+
+    const fetchData = async () => {
+        setLoading(true)
+        try {
+
+            const feth = await fetch('https://e-web-onlineshop.onrender.com/orders')
+            const data = await feth.json()
+            const tranding = data.filter(item => item.featureProduct == true)
+            setProduct(tranding);
+        } catch (error) {
+
+            setError(error.message)
+        } finally {
+            setLoading(false)
+        }
+    }
 
     useEffect(() => {
-        fetch('https://e-web-onlineshop.onrender.com/orders')
-            .then(res => res.json())
-            .then(data => {
-                const tranding = data.filter(item => item.featureProduct == true)
-                setProduct(tranding);
-            })
+        fetchData()
         // 
     }, [])
     const whitleListFun = (id) => {
@@ -31,6 +45,16 @@ const FetureProducs = () => {
         }
 
 
+    }
+
+    if (loading) {
+        return <div className='flex justify-center items-center w-full'><MoonLoader
+            size={28}
+            speedMultiplier={1}
+        /></div>
+    }
+    if (error) {
+        return <p className='text-center uppercase text-red-500'>{error}</p>
     }
 
     return (
@@ -73,7 +97,7 @@ const FetureProducs = () => {
                                                 <Heart onClick={() => whitleListFun(item.id)} size={18} />
                                             </button>
                                             <button className="bg-white hover:bg-indigo-500 cursor-pointer transition duration-500 hover:text-white p-3 rounded-full shadow">
-                                                <Link href={"/shoping"}><Search size={18} /></Link> 
+                                                <Link href={"/shoping"}><Search size={18} /></Link>
                                             </button>
                                         </div>
                                     </div>

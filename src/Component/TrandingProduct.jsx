@@ -7,37 +7,55 @@ import "swiper/css";
 import "swiper/css/navigation";
 import Link from 'next/link';
 import { CreatCont } from '@/app/Context';
+import { MoonLoader } from 'react-spinners';
+import Image from 'next/image';
 
 
 const TrandingProduct = () => {
 
     const { whiteListData, setWhiteListData } = useContext(CreatCont)
-
-
     const [product, setProduct] = useState([])
-    useEffect(() => {
-        fetch('https://e-web-onlineshop.onrender.com/orders')
-            .then(res => res.json())
-            .then(data => {
-                const tranding = data.filter(item => item.trending == true)
-                setProduct(tranding);
-            })
-        // 
-    }, [])
+    const [erro, setErro] = useState(null)
+    const [loading, setLoading] = useState(false)
+
+    const fetchData = async () => {
+        setLoading(true)
+        try {
+
+            const feth = await fetch('https://e-web-onlineshop.onrender.com/orders')
+            const data = await feth.json()
+            const tranding = data.filter(item => item.featureProduct == true)
+            setProduct(tranding);
+        } catch (error) {
+
+            setError(error.message)
+        } finally {
+            setLoading(false)
+        }
+    }
+    useEffect(() => { fetchData() }, [])
 
     const whitleListFun = (id) => {
-                const filterProduct = whiteListData?.find(item => item?.id === id)
-            if (filterProduct) {
-                alert('added')
-            } else {
-                const tranding = product.find(item => item.id == id)
-                setWhiteListData([...whiteListData, tranding])
-            }
-      
+        const filterProduct = whiteListData?.find(item => item?.id === id)
+        if (filterProduct) {
+            alert('added')
+        } else {
+            const tranding = product.find(item => item.id == id)
+            setWhiteListData([...whiteListData, tranding])
+        }
+
 
     }
 
-
+    if (loading) {
+        return <div className='flex justify-center items-center w-full'><MoonLoader
+            size={28}
+            speedMultiplier={1}
+        /></div>
+    }
+    if (erro) {
+        return <p className='text-center uppercase text-red-500'>{erro}</p>
+    }
 
     return (
         <div className='w-11/12 mx-auto my-12 '>
@@ -74,11 +92,20 @@ const TrandingProduct = () => {
                                 <div className="group relative text-center">
                                     {/* Image */}
                                     <div className="relative overflow-hidden">
-                                        <img
-                                            src={item.images}
+                                        <Image className="w-full transition duration-500 group-hover:scale-130 h-40 md:h-87.5 object-cover"
+                                            src={item.images[0]}
+                                            width={20}
+                                            height={20}
                                             alt={item.name}
-                                            className="w-full transition duration-500 group-hover:scale-130 h-40 md:h-87.5 object-cover"
+                                            priority
+                                            sizes="100vw"
+                                            quality={100}
                                         />
+                                        {/* <img
+                                            src=
+                                            alt=
+                                            
+                                        /> */}
 
                                         {/* Hover Icons */}
                                         <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition duration-700 ease-in-out">
