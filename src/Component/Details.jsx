@@ -117,7 +117,7 @@ const Details = () => {
                     src={filterProduct? filterProduct.images[0] : "https://images.unsplash.com/photo-1557683304-673a23048d34?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDN8fGJsdWUlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww"}
                     width={100}
                     height={100}
-                    alt={filterProduct.name}
+                    alt={filterProduct?.name}
                     priority
                     sizes="100vw"
                     quality={100}
