@@ -13,27 +13,29 @@ const CartComponent = () => {
     let [amout, setAmout] = useState(0)
     const router = useRouter()
     const [discount, SetDiscount] = useState(0)
-
+    console.log(cart);
     cart?.map(item => {
+        const total = item.price * item.qt 
+        
         return (
-            amout += Number(item.price)
+            amout += total
         )
     })
-    const paymentFun = () => {
+    // const paymentFun = () => {
 
-        toast.success(' Payment Successfull', {
-            position: "top-right",
-            autoClose: 1500,
-            hideProgressBar: false,
-            closeOnClick: false,
-            pauseOnHover: false,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-            transition: Bounce,
-        });
-        router.push("/")
-    }
+    //     toast.success(' Payment Successfull', {
+    //         position: "top-right",
+    //         autoClose: 1500,
+    //         hideProgressBar: false,
+    //         closeOnClick: false,
+    //         pauseOnHover: false,
+    //         draggable: true,
+    //         progress: undefined,
+    //         theme: "colored",
+    //         transition: Bounce,
+    //     });
+    //     router.push("/")
+    // }
 
     const delteItem = (id) => {
         const delteBefore = cart.filter(item => item.id !== id)
@@ -144,7 +146,7 @@ const CartComponent = () => {
                                                 <p className='border-b border-dotted'>Discout : <span>{discount}</span> </p>
                                             </div>
                                             <div className='flex flex-col gap-3  justify-between'>
-                                                <p >Amount : {amout - discount} BDT</p> <button onClick={paymentFun} className='bg-indigo-500 text-white text-sm px-4 py-2'>Payment Now</button>
+                                                <p >Amount : {amout - discount} BDT</p> <Link href={"/payment"} className='bg-indigo-500 text-white text-center text-sm px-4 py-2'>Payment Now</Link>
                                             </div>
                                         </div>
                                     </div>

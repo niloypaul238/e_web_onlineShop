@@ -25,7 +25,6 @@ const Details = () => {
 
 
     const filterProduct = product?.find(item => item.id === id)
-    console.log(filterProduct);
     const clientDataFetch = async () => {
         setLoading(true)
         try {

@@ -80,7 +80,6 @@ const Catagory = () => {
                         <p class="flex justify-between items-center"><span>Brand : ${findModelProduct.brand}</span> <span class="text-indigo-800 bg-indigo-800/10 p-1 rounded">${findModelProduct.createdAt}</span></p>
                         <p class="text-left">Color : ${findModelProduct.color}</p>
                         <p class="text-left"> </p>
-                        <Link href="/" >View Details</Link>
                     </div>
                 </div>
             `,
@@ -90,7 +89,7 @@ const Catagory = () => {
     }
 
     const whitleListFun = (e) => {
-        alert('s')
+        
         const filterProduct = alldata.find(item => item.id == e)
         const findPro = whiteListData.find(item => item?.id === e)
         if (findPro) {
@@ -113,7 +112,7 @@ const Catagory = () => {
 
     return (
         <div className='sm:grid w-11/12 mx-auto gap-5 my-10 grid-cols-12'>
-            <div className='relative  col-span-3 group rounded-2xl'>
+            <div className='relative mb-5  col-span-3 group rounded-2xl'>
                 <div className='flex flex-col gap-x-3 mt-2 pr-4'>
                     <div className='border-b pb-1 mb-2 border-gray-500'>
                         <p className='text-xl text-gray-500 '>Product Category</p>
@@ -133,7 +132,7 @@ const Catagory = () => {
                     {
                         shwoProduct.map(item => {
                             return (
-                                <div key={item.id} className='overflow-hidden  p-4 group relative flex flex-col justify-center items-center'>
+                                <div key={item.id} className='overflow-hidden border md:border-0 rounded-md border-indigo-400 p-4 group relative flex flex-col justify-center items-center'>
 
                                     <span
                                         className="absolute rounded top-0 right-0 h-px w-0 bg-indigo-500 transition-all duration-200 group-hover:w-full"></span>
@@ -181,6 +180,8 @@ const Catagory = () => {
 
                                     <p className='text-center group-hover:text-indigo-600 transition-text duration-300'>{item.name.length > 17 ? `${item.name.slice(0, 17)}...` : item.name}</p>
                                     <p>{item.price} {item.currency}</p>
+                                            <Link href={`/productDetails/${item.id}`} className='bg-indigo-500 flex justify-center md:hidden w-full p-1 mt-2 text-white'>Read More</Link>
+
                                 </div>
                             )
                         })
